@@ -130,8 +130,8 @@ CREATE TABLE `article`
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
-DROP TABLE IF EXISTS `categories`;
-CREATE TABLE `categories`
+DROP TABLE IF EXISTS `category`;
+CREATE TABLE `category`
 (
   `id`            bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `category_name` varchar(255) NOT NULL UNIQUE,
@@ -141,8 +141,8 @@ CREATE TABLE `categories`
   PRIMARY KEY (`id`) USING BTREE
 );
 
-DROP TABLE IF EXISTS `tags`;
-CREATE TABLE `tags`
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag`
 (
   `id`         int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `tag_name`   varchar(255) NOT NULL UNIQUE,

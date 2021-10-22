@@ -6,9 +6,9 @@ import (
 
 type Article struct {
 	gorm.Model
-	Title       string	`gorm:"type:varchar(255);not null" json:""`
-	Content     string	`gorm:"type: ;not null" json:""`
-	Category_id int	`gorm:"type: ;not null" json:""`
-	Tag_id      int	`gorm:"type: ;not null" json:""`
-	User_id     int	`gorm:"type: ;not null" json:""`
+	Title       string	`gorm:"type:varchar(255);not null" json:"title"`
+	Content     string	`gorm:"type:varchar(255);not null" json:"content"`
+	CategoryId int	`gorm:"type:int;not null" json:"catefory_id"`
+	TagId      int	`gorm:"type:int;not null" json:"tag_id"`
+	UserId     int	`gorm:"type:int;not null" json:"user_id"`
 }
