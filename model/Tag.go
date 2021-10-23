@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Tag struct {
+type TagModel struct {
 	gorm.Model
 	TagName string `gorm:"type:varchar(255) not null" json:"tag_name"`
 }

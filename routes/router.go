@@ -1,8 +1,9 @@
 package routes
 
 import (
-	"net/http"
+	// "net/http"
 	"mixindev/utils"
+	"mixindev/api/v1/article"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,14 +11,17 @@ func InitRouter()  {
 	gin.SetMode(utils.AppMode)
 	r := gin.Default()
 
-	router := r.Group("api/v1")
+	//文章相关
+	rArticle := r.Group("v1/article")
 	{
-		router.GET("hello",func (c *gin.Context)  {
-			c.JSON(http.StatusOK, gin.H{
-				"msg": "ok",
+		rArticle.GET("/:id",article.GetArticleById)
+		rArticle.GET("/ping", func(c *gin.Context) {
+			c.JSON(200, gin.H{
+				"message": "pong",
 			})
 		})
 	}
+	
 
 	r.Run(utils.HttpPort)
 }

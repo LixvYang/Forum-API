@@ -1,24 +1,62 @@
 package errmsg
 
-var codeMsg = map[int]string{
-	SUCCSE:                 "OK",
-	ERROR:                  "FAIL",
-	ERROR_USERNAME_USED:    "用户名已存在！",
-	ERROR_PASSWORD_WRONG:   "密码错误",
-	ERROR_USER_NOT_EXIST:   "用户不存在",
-	ERROR_TOKEN_EXIST:      "TOKEN不存在,请重新登陆",
-	ERROR_TOKEN_RUNTIME:    "TOKEN已过期,请重新登陆",
-	ERROR_TOKEN_WRONG:      "TOKEN不正确,请重新登陆",
-	ERROR_TOKEN_TYPE_WRONG: "TOKEN格式错误,请重新登陆",
-	ERROR_USER_NO_RIGHT:    "该用户无权限",
+import (
+	"fmt"
+)
 
-	ERROR_ART_NOT_EXIST: "文章不存在",
-
-	ERROR_CATENAME_USED:  "该分类已存在",
-	ERROR_CATE_NOT_EXIST: "该分类不存在",
+type Errmsg struct {
+	Code int
+	Message string
 }
 
-func GetErrMsg(code int) string {
-	return codeMsg[code]
+func (err Errmsg) Error() string {
+	return err.Message
 }
+
+// Err represents an error
+type Err struct {
+	Code    int
+	Message string
+	Err     error
+}
+
+func New(Errmsg *Errmsg, err error) *Err {
+	return &Err{Code: Errmsg.Code, Message: Errmsg.Message, Err: err}
+}
+
+func (err *Err) Add(message string) error {
+	err.Message += " " + message
+	return err
+}
+
+func (err *Err) Addf(format string, args ...interface{}) error {
+	err.Message += " " + fmt.Sprintf(format, args...)
+	return err
+}
+
+func (err *Err) Error() string {
+	return fmt.Sprintf("Err - code: %d, message: %s, error: %s", err.Code, err.Message, err.Err)
+}
+
+func IsErrUserNotFound(err error) bool {
+	code, _ := DecodeErr(err)
+	return code == ErrUserNotFound.Code
+}
+
+func DecodeErr(err error) (int, string) {
+	if err == nil {
+		return OK.Code, OK.Message
+	}
+
+	switch typed := err.(type) {
+	case *Err:
+		return typed.Code, typed.Message
+	case *Errmsg:
+		return typed.Code, typed.Message
+	default:
+	}
+
+	return InternalServerError.Code, err.Error()
+}
+
 

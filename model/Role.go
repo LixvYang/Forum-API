@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Role struct {
+type RoleModel struct {
 	gorm.Model
 	Name string  `gorm:"type:varchar(50);not null" json:"name"`
 }

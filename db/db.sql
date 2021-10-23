@@ -110,9 +110,9 @@ CREATE TABLE `menu_role`
 -- Records of role_menu
 -- ----------------------------
 INSERT INTO `menu_role` (id,role_id,menu_id,created_at,updated_at,deleted_at) VALUES
-(1,1,1,'2019-11-11 16:25:33', NULL , NULL),
-(2,1,2,'2019-11-11 16:25:33', NULL , NULL),
-(3,1,3,'2019-11-11 16:25:33', NULL , NULL);
+(1,1,1,'2021-10-22 18:29:33.763', NULL , NULL),
+(2,1,2,'2021-10-22 18:29:33.763', NULL , NULL),
+(3,1,3,'2021-10-22 18:29:33.763', NULL , NULL),
 
 
 DROP TABLE IF EXISTS `article`;
@@ -129,6 +129,8 @@ CREATE TABLE `article`
   `deleted_at`  datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+INSERT INTO `article` VALUES (1,'Hello','Linux',1,1,1,'2021-10-22 18:29:33.763',NULL,NULL),
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category`

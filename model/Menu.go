@@ -4,7 +4,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Menu struct {
+type MenuModel struct {
 	gorm.Model
 	Name string `gorm:"type:varchar(50) not null" json:"name"`
 	Path string `gorm:"type:varchar(50) not null" json:"path"`
