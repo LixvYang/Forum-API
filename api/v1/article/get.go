@@ -1,9 +1,10 @@
 package article
 
 import (
-	. "mixindev/api/v1"
+	v1 "mixindev/api/v1"
 	"github.com/gin-gonic/gin"
 	"strconv"
+	"net/http"
 
 	"mixindev/pkg/errmsg"
 	"mixindev/model"
@@ -11,13 +12,13 @@ import (
 
 func GetArticleById(c *gin.Context)  {
 	id, _ := strconv.Atoi(c.Param("id"))
-	article, err := model.GetArticleById(uint64(id))
+	article, err := model.GetArticleById(id)
 	if err != nil {
-		SendResponse(c, errmsg.ErrArticleNotFound,nil)
+		v1.SendResponse(c, errmsg.ErrArticleNotFound,nil)
 		return
 	}
 
-	articleInfo := &model.ArticleInfo{
+	articleInfo := model.ArticleInfo{
 		Id:           article.Id,
 		Title:        article.Title,
 		Content:      article.Content,
@@ -31,5 +32,14 @@ func GetArticleById(c *gin.Context)  {
 		CreatedAt:    article.CreatedAt,
 		UpdatedAt:    article.UpdatedAt,
 	}
-	SendResponse(c, nil, articleInfo)
+	v1.SendResponse(c, nil, articleInfo)
+}
+
+func TableName(c *gin.Context)  {
+	tablename := model.TableName()
+	c.JSON(http.StatusOK, gin.H{
+		"status":  200,
+		"data":    tablename,
+		"message": errmsg.ErrArticleNotFound,
+	})
 }

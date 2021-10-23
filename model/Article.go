@@ -31,7 +31,7 @@ type ArticleInfo struct {
 }
 
 // Return Table Name
-func (a *ArticleModel) TableName() string {
+func TableName() string {
 	return "article"
 }
 
@@ -41,7 +41,7 @@ func (a *ArticleModel) CreateArticle(data *ArticleModel)  {
 }
 
 // Get article by id
-func GetArticleById(id uint64) (ArticleModel, error) {
+func GetArticleById(id int) (ArticleModel, error) {
 	var article ArticleModel
 	err := db.First(&article, id)
 	if err != nil {

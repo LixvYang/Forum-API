@@ -15,11 +15,12 @@ func InitRouter()  {
 	rArticle := r.Group("v1/article")
 	{
 		rArticle.GET("/:id",article.GetArticleById)
-		rArticle.GET("/ping", func(c *gin.Context) {
+		rArticle.GET("ping", func(c *gin.Context) {
 			c.JSON(200, gin.H{
 				"message": "pong",
 			})
 		})
+		rArticle.GET("tablename",article.TableName)
 	}
 	
 
