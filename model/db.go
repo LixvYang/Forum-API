@@ -2,17 +2,18 @@ package model
 
 import (
 	"fmt"
+	"log"
+	"mixindev/utils"
+	"time"
+
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
-	"log"
-	"mixindev/utils"
-	"time"
 )
 
 var (
-	db  *gorm.DB
+	db *gorm.DB
 )
 
 func InitDb() {
@@ -41,7 +42,7 @@ func InitDb() {
 	}
 
 	// 迁移数据表，在没有数据表结构变更时候，建议注释不执行
-	db.AutoMigrate(ArticleModel{},CategoryModel{},MenuModel{},RoleModel{},TagModel{},UserModel{})
+	db.AutoMigrate(Article{}, Category{}, Menu{}, Role{}, Tag{}, User{})
 
 	sqlDB, _ := db.DB()
 	// SetMaxIdleCons 设置连接池中的最大闲置连接数。

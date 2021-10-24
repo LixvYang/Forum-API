@@ -21,6 +21,7 @@ func InitRouter()  {
 			})
 		})
 		rArticle.GET("tablename",article.TableName)
+		rArticle.POST("add", article.Create)
 	}
 	
 

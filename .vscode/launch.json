@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Code",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "remotePath": "",
+            "program": "${workspaceRoot}",
+            "env": {},
+            "args": [],
+            "showLog": true
+        },
+        {
+            "name": "Test Current File",
+            "type": "go",
+            "request": "launch",
+            "mode": "test",
+            "remotePath": "",
+            "port": 3000,
+            "host": "127.0.0.1",
+            "program": "${file}",
+            "env": {},
+            "args": [],
+            "showLog": true
+        }   
+    ]
+}

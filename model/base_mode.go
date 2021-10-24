@@ -2,6 +2,7 @@ package model
 
 import (
 	"time"
+
 )
 
 type BaseModel struct {

@@ -1,18 +1,17 @@
 package model
 
 import (
-	"time"
 	"mixindev/pkg/errmsg"
-
+	"time"
 )
 
-type ArticleModel struct {
+type Article struct {
 	BaseModel
-	Title       string	`gorm:"type:varchar(255);not null" json:"title"`
-	Content     string	`gorm:"type:varchar(255);not null" json:"content"`
-	CategoryId int	`gorm:"type:int;not null" json:"category_id"`
-	TagId      int	`gorm:"type:int;not null" json:"tag_id"`
-	UserId     int	`gorm:"type:int;not null" json:"user_id"`
+	Title      string `gorm:"column:title;type:varchar(255);not null" json:"title" binding:"required"`
+	Content    string `gorm:"column:content;type:varchar(255);not null" json:"content" binding:"required"`
+	CategoryId uint64 `gorm:"column:category_id;bigint(20);not null" json:"category_id" binding:"required"`
+	TagId      uint64 `gorm:"column:tag_id;bigint(20);not null" json:"tag_id" binding:"required"`
+	UserId     uint64 `gorm:"column:user_id;bigint(20);not null" json:"user_id" binding:"required"`
 }
 
 type ArticleInfo struct {
@@ -36,28 +35,28 @@ func TableName() string {
 }
 
 // Create new article
-func (a *ArticleModel) CreateArticle(data *ArticleModel)  {
-	
+func (a *Article) CreateArticle() error {
+	return db.Create(&a).Error
 }
 
 // Get article by id
-func GetArticleById(id int) (ArticleModel, error) {
-	var article ArticleModel
-	err := db.First(&article, id)
+func GetArticleById(id uint64) (Article, error) {
+	var article Article
+	err := db.First(&article).Error
 	if err != nil {
 		return article, errmsg.ErrArticleNotFound
 	}
-	return 	article, errmsg.OK
+	return article, errmsg.OK
 }
 
 // Delete article by id
-func (a *ArticleModel) DeleteArticle(id uint64)  {
-	
+func (a *Article) DeleteArticle(id uint64) {
+
 }
 
 // Get articles list
-func (a *ArticleModel) ListArticles()  {
-	
+func (a *Article) ListArticles() {
+
 }
 
 // 验证创建字段

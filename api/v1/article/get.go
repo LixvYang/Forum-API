@@ -1,41 +1,27 @@
 package article
 
 import (
-	v1 "mixindev/api/v1"
-	"github.com/gin-gonic/gin"
-	"strconv"
+	// v1 "mixindev/api/v1"
 	"net/http"
+	"strconv"
 
-	"mixindev/pkg/errmsg"
+	"github.com/gin-gonic/gin"
+
 	"mixindev/model"
+	"mixindev/pkg/errmsg"
 )
 
-func GetArticleById(c *gin.Context)  {
+func GetArticleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	article, err := model.GetArticleById(id)
-	if err != nil {
-		v1.SendResponse(c, errmsg.ErrArticleNotFound,nil)
-		return
-	}
-
-	articleInfo := model.ArticleInfo{
-		Id:           article.Id,
-		Title:        article.Title,
-		Content:      article.Content,
-		CategoryId:   1,//article.CategoryId,
-		CategoryName: "1",//category.CategoryName,
-		TagId:        1,//article.TagId,
-		TagName:      "1",//tag.TagName,
-		UserId:       1,//article.UserId,
-		UserName:     "1",//user.Username,
-		Avatar:       "1",//user.Avatar,
-		CreatedAt:    article.CreatedAt,
-		UpdatedAt:    article.UpdatedAt,
-	}
-	v1.SendResponse(c, nil, articleInfo)
+	data, err := model.GetArticleById(uint64(id))
+	c.JSON(http.StatusOK, gin.H{
+		"status":  err,
+		"data":    data,
+		"message": errmsg.ErrArticleNotFound,
+	})
 }
 
-func TableName(c *gin.Context)  {
+func TableName(c *gin.Context) {
 	tablename := model.TableName()
 	c.JSON(http.StatusOK, gin.H{
 		"status":  200,
