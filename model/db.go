@@ -14,6 +14,7 @@ import (
 
 var (
 	db *gorm.DB
+	err error
 )
 
 func InitDb() {
@@ -42,7 +43,7 @@ func InitDb() {
 	}
 
 	// 迁移数据表，在没有数据表结构变更时候，建议注释不执行
-	db.AutoMigrate(Article{}, Category{}, Menu{}, Role{}, Tag{}, User{})
+	// db.AutoMigrate(Article{}, Category{}, Menu{}, Role{}, Tag{}, User{})
 
 	sqlDB, _ := db.DB()
 	// SetMaxIdleCons 设置连接池中的最大闲置连接数。

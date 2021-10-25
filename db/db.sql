@@ -120,7 +120,7 @@ CREATE TABLE `article`
 (
   `id`          bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `title`       varchar(255) NOT NULL,
-  `content`     varchar(255) NOT NULL,
+  `content`     longtext CHARACTER SET utf8 COLLATE utf8_general_ci NULL,
   `category_id` bigint(20) UNSIGNED NOT NULL,
   `tag_id`      bigint(20) UNSIGNED NOT NULL,
   `user_id`     bigint(20) UNSIGNED NOT NULL,

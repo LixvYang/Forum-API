@@ -1,31 +1,23 @@
 package article
 
 import (
-	// v1 "mixindev/api/v1"
+	"log"
+	"mixindev/model"
+	"mixindev/pkg/errmsg"
 	"net/http"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-
-	"mixindev/model"
-	"mixindev/pkg/errmsg"
 )
 
 func GetArticleById(c *gin.Context) {
+	log.Println("启动GetArticleById服务")
 	id, _ := strconv.Atoi(c.Param("id"))
-	data, err := model.GetArticleById(uint64(id))
+	art, err := model.GetArticleById(id)
+	log.Println("传入参数id完成")
 	c.JSON(http.StatusOK, gin.H{
-		"status":  err,
-		"data":    data,
-		"message": errmsg.ErrArticleNotFound,
-	})
-}
-
-func TableName(c *gin.Context) {
-	tablename := model.TableName()
-	c.JSON(http.StatusOK, gin.H{
-		"status":  200,
-		"data":    tablename,
-		"message": errmsg.ErrArticleNotFound,
+		"status":  errmsg.ErrArticleNotFound,
+		"data":    art,
+		"message": err,
 	})
 }
