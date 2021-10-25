@@ -1,8 +1,8 @@
 package model
 
 import (
-	"log"
-	"mixindev/pkg/errmsg"
+	"mixindev/pkg/constvar"
+	"time"
 
 	"gorm.io/gorm"
 )
@@ -16,20 +16,20 @@ type Article struct {
 	UserId     int    `gorm:"column:user_id"`
 }
 
-// type ArticleInfo struct {
-// 	Id           uint64    `json:"id"`
-// 	Title        string    `json:"title"`
-// 	Content      string    `json:"content"`
-// 	CategoryId   uint64    `json:"category_id"`
-// 	CategoryName string    `json:"category_name"`
-// 	TagId        uint64    `json:"tag_id"`
-// 	TagName      string    `json:"tag_name"`
-// 	UserId       uint64    `json:"user_id"`
-// 	UserName     string    `json:"username"`
-// 	Avatar       string    `json:"avatar"`
-// 	CreatedAt    time.Time `json:"created_at"`
-// 	UpdatedAt    time.Time `json:"update_at"`
-// }
+type ArticleInfo struct {
+	Id           int       `json:"id"`
+	Title        string    `json:"title"`
+	Content      string    `json:"content"`
+	CategoryId   int       `json:"category_id"`
+	CategoryName string    `json:"category_name"`
+	TagId        int       `json:"tag_id"`
+	TagName      string    `json:"tag_name"`
+	UserId       int       `json:"user_id"`
+	UserName     string    `json:"username"`
+	Avatar       string    `json:"avatar"`
+	CreatedAt    time.Time `json:"created_at"`
+	UpdatedAt    time.Time `json:"updated_at"`
+}
 
 // Create new article
 func (a *Article) CreateArticle() error {
@@ -38,31 +38,33 @@ func (a *Article) CreateArticle() error {
 
 // Get article by id
 func GetArticleById(id int) (Article, error) {
-	var a Article
-	log.Println("开始查询")
-	err = db.First(&a, id).Error
-	log.Println("查询失败")
-	if err != nil {
-		log.Println("查询失败")
-	}
-	return a, errmsg.OK
+	var article Article
+	d := db.First(&article, id)
+	return article, d.Error
 }
 
 // Delete article by id
 func DeleteArticle(id int) error {
-	var art Article
-	log.Println("开始删除")
-	err = db.Where("id = ?", id).Delete(&art).Error
-	log.Println("完成删除")
-	if err != nil {
-		return err
-	}
-	return err
+	var article Article
+	d := db.Where("id = ?", id).Delete(&article)
+	return d.Error
 }
 
 // Get articles list
-func (a *Article) ListArticles() {
+func (a *Article) ListArticles(offset, limit int) ([]Article, int64, error) {
+	if limit == 0 {
+		limit = constvar.DefaultLimit
+	}
 
+	articles := make([]Article, 0)
+	var count int64
+	if err := db.Model(&a).Count(&count).Error; err != nil {
+		return articles, count, err
+	}
+	if err := db.Where("").Offset(offset).Limit(limit).Order("id desc").Find(&articles).Error; err != nil {
+		return articles, count, err
+	}
+	return articles, count, nil
 }
 
 // 验证创建字段

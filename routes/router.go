@@ -16,7 +16,9 @@ func InitRouter() {
 	rArticle := r.Group("v1/article")
 	{
 		rArticle.GET("/:id", article.GetArticleById)
+		rArticle.GET("",article.GetArticlesList)
 		rArticle.DELETE("/:id", article.DeleteArticle)
+		rArticle.POST("/add",article.AddArticle)
 	}
 
 	r.Run(utils.HttpPort)

@@ -10,7 +10,8 @@ type Category struct {
 }
 
 // 根据标签id获取标签数据.
-func (c Category) GetCategoryById(id uint64) (Category, error) {
-	d := db.Where("id = ?", id).First(&c)
-	return c, d.Error
+func GetCategoryById(id int) (Category, error) {
+	var category Category
+	d := db.First(&category,id)
+	return category, d.Error
 }

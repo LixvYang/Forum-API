@@ -130,7 +130,8 @@ CREATE TABLE `article`
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
-INSERT INTO `article` VALUES (1,'Hello','Linux',1,1,1,'2021-10-22 18:29:33.763',NULL,NULL),
+INSERT INTO `article` VALUES (1,'Hello','Linux',1,1,1,'2021-10-22 18:29:33.763',NULL,NULL);
+INSERT INTO `article` VALUES (2,'Xin','Long for run.',1,1,1,'2021-10-22 18:29:33.763',NULL,NULL);
 
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category`
@@ -142,6 +143,7 @@ CREATE TABLE `category`
   `deleted_at`    datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
+INSERT INTO `category` VALUES (1,'Learn','2021-10-22 18:29:33.763',NULL,NULL);
 
 DROP TABLE IF EXISTS `tag`;
 CREATE TABLE `tag`
@@ -153,3 +155,4 @@ CREATE TABLE `tag`
   `deleted_at` timestamp NULL,
   PRIMARY KEY (`id`) USING BTREE
 );
+INSERT INTO `tag` VALUES  (1,'Tip','2021-10-22 18:29:33.763',NULL,NULL);

@@ -12,10 +12,8 @@ import (
 	"gorm.io/gorm/schema"
 )
 
-var (
-	db *gorm.DB
-	err error
-)
+var db *gorm.DB
+var err error
 
 func InitDb() {
 
@@ -26,7 +24,7 @@ func InitDb() {
 		utils.DbPort,
 		utils.DbName,
 	)
-	db, err := gorm.Open(mysql.Open(dns), &gorm.Config{
+	db, err = gorm.Open(mysql.Open(dns), &gorm.Config{
 		// gorm日志模式：Warn
 		Logger: logger.Default.LogMode(logger.Warn),
 		// 外键约束

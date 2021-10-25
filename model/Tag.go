@@ -10,7 +10,8 @@ type Tag struct {
 }
 
 // 根据标签id获取标签数据.
-func (t Tag) GetTagById(id uint64) (Tag, error) {
-	d := db.First(&t, id)
-	return t, d.Error
+func GetTagById(id int) (Tag, error) {
+	var tag Tag
+	d := db.First(&tag, id)
+	return tag, d.Error
 }

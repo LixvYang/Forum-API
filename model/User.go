@@ -1,8 +1,6 @@
 package model
 
 import (
-	"fmt"
-
 	"gorm.io/gorm"
 )
 
@@ -14,8 +12,8 @@ type User struct {
 }
 
 // GetUserById gets an user by the user id.
-func (u User) GetUserById(id uint64) (User, error) {
-	d := db.Where("id = ?", id).First(&u)
-	fmt.Println("GetUser-d", d)
-	return u, d.Error
+func GetUserById(id int) (User, error) {
+	var user User
+	d := db.First(&user,id)
+	return user, d.Error
 }
