@@ -18,7 +18,7 @@ CREATE TABLE `user`
   `updated_at` datetime(3) NULL DEFAULT NULL,
   `deleted_at` datetime(3) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 574 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 INSERT INTO `user`  VALUES (1, 'admin', '$2a$10$K3DRY94amW.0Shce.5FsmuDqjKPzQczll.s6fHA361yPJ0le1Igr.','https://user-gold-cdn.xitu.io/2019/5/29/16b028263cf8b532?imageView2/1/w/100/h/100/q/85/format/webp/interlace/1','2021-10-22 17:05:14.764', NULL , NULL);
 
 -- ----------------------------
