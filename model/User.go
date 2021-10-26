@@ -1,6 +1,7 @@
 package model
 
 import (
+	"fmt"
 	"mixindev/pkg/auth"
 	"mixindev/pkg/constvar"
 
@@ -43,8 +44,10 @@ func (u *User) UpdateUser() error {
 }
 
 // GetUserByName gets an user by the username.
-func (u *User) GetUserByName(username string) {
-
+func (u *User) GetUserByName(username string) (*User, error) {
+	d := db.Where("username = ?", username).First(&u)
+	fmt.Println("GetUser-d", d)
+	return u, d.Error
 }
 
 //List users

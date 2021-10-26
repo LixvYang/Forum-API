@@ -26,5 +26,5 @@ func GetUserById(c *gin.Context) {
 }
 
 func GetUseInfo(c *gin.Context) {
-
+	
 }
