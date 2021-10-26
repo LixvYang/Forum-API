@@ -31,12 +31,24 @@ func AddArticle(c *gin.Context) {
 		UserId:     r.UserId,
 	}
 
+	if err := u.Validate(); err != nil {
+		v1.SendResponse(c, errmsg.ErrValidation, nil)
+		return
+	}
+	// 检验字段的合法性
+	if valid := ValidateCreateArticle(u.UserId, u.CategoryId, u.TagId); !valid {
+		v1.SendResponse(c, errmsg.ErrValidation, nil)
+		return
+	}
+
 	// 写入数据库
 	if err := u.CreateArticle(); err != nil {
 		fmt.Println(err)
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
+
+
 
 	v1.SendResponse(c, nil, nil)
 }

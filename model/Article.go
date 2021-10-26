@@ -4,6 +4,7 @@ import (
 	"mixindev/pkg/constvar"
 	"time"
 
+	"github.com/go-playground/validator/v10"
 	"gorm.io/gorm"
 )
 
@@ -68,3 +69,7 @@ func (a *Article) ListArticles(offset, limit int) ([]Article, int64, error) {
 }
 
 // 验证创建字段
+func (a *Article) Validate() error {
+	validate := validator.New()
+	return validate.Struct(a)
+}

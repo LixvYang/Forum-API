@@ -2,6 +2,7 @@ package model
 
 import (
 	"mixindev/pkg/auth"
+	"mixindev/pkg/constvar"
 
 	"gorm.io/gorm"
 )
@@ -19,16 +20,16 @@ type UserInfo struct {
 	Avatar   string
 }
 
+// Create user
+func (u *User) AddUser() error {
+	return db.Create(&u).Error
+}
+
 // GetUserById gets an user by the user id.
 func GetUserById(id int) (User, error) {
 	var user User
 	d := db.First(&user, id)
 	return user, d.Error
-}
-
-// Create user
-func (u *User) AddUser() error {
-	return db.Create(&u).Error
 }
 
 //Delete user
@@ -37,9 +38,32 @@ func DeleteUser(id int) error {
 	return db.Delete(&user, id).Error
 }
 
+func (u *User) UpdateUser() error {
+	return db.Save(&u).Error
+}
+
 // GetUserByName gets an user by the username.
-func (u *User) GetUserByName(username string)  {
-	
+func (u *User) GetUserByName(username string) {
+
+}
+
+//List users
+func (u *User) ListUser(offset, limit int) ([]User, int64, error) {
+	if limit == 0 {
+		limit = constvar.DefaultLimit
+	}
+
+	users := make([]User, 0)
+	var count int64
+	if err := db.Model(&u).Count(&count).Error; err != nil {
+		return users, count, err
+	}
+
+	if err := db.Where("").Offset(offset).Limit(limit).Order("id desc").Find(&users).Error; err != nil {
+		return users, count, err
+	}
+	return users, count, err
+
 }
 
 // Compare with the plain text password. Returns true if it's the same as the encrypted one (in the `User` struct).

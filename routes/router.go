@@ -31,5 +31,7 @@ func InitRouter() {
 		rArticle.POST("/add",article.AddArticle)
 	}
 
+	
+
 	r.Run(utils.HttpPort)
 }

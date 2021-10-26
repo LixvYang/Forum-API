@@ -30,13 +30,13 @@ func AddUser(c *gin.Context) {
 		Avatar:   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmb_j0g0GkHwuF42L8gNpJtSrT10kRQyEMvQ&usqp=CAU",
 	}
 
-	if err := u.AddUser(); err != nil {
-		v1.SendResponse(c, errmsg.ErrDatabase, nil)
+	if err := u.Encrypt(); err != nil {
+		v1.SendResponse(c, errmsg.ErrEncrypt, nil)
 		return
 	}
 
-	if err := u.Encrypt(); err != nil {
-		v1.SendResponse(c, errmsg.ErrEncrypt, nil)
+	if err := u.AddUser(); err != nil {
+		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
 
