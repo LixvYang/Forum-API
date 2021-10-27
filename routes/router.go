@@ -6,6 +6,7 @@ import (
 	"mixindev/api/v1/tag"
 	"mixindev/api/v1/menu"
 	"mixindev/api/v1/user"
+	"mixindev/api/v1/role"
 	"mixindev/utils"
 
 	"github.com/gin-gonic/gin"
@@ -58,6 +59,15 @@ func InitRouter() {
 		rMenu.DELETE("/:id", menu.DeleteMenu)
 		rMenu.GET("/:id", menu.GetMenuById)
 		rMenu.PUT("/:id", menu.UpdateMenuById)
+	}
+
+	rRole := r.Group("v1/role")
+	{
+		rRole.POST("", role.AddRole)
+		rRole.GET("", role.ListRoles)
+		rRole.DELETE("/:id", role.DeleteRole)
+		rRole.GET("/:id", role.GetRoleById)
+		rRole.PUT("/:id", role.UpdateRole)
 	}
 
 	r.Run(utils.HttpPort)
