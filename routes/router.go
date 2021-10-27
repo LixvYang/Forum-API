@@ -2,8 +2,9 @@ package routes
 
 import (
 	"mixindev/api/v1/article"
-	"mixindev/api/v1/user"
 	"mixindev/api/v1/category"
+	"mixindev/api/v1/tag"
+	"mixindev/api/v1/user"
 	"mixindev/utils"
 
 	"github.com/gin-gonic/gin"
@@ -36,9 +37,17 @@ func InitRouter() {
 	rCategory := r.Group("v1/category")
 	{
 		rCategory.POST("", category.AddCategory)
-		rCategory.GET("", category.ListCategory)
+		rCategory.GET("", category.ListCategories)
 		rCategory.DELETE("/:id", category.DeleteCategory)
 		rCategory.GET("/:id", category.GetCategoryById)
+	}
+
+	rTag := r.Group("v1/tag")
+	{
+		rTag.POST("", tag.AddTag)
+		rTag.GET("", tag.ListTags)
+		rTag.DELETE("/:id", tag.DeleteTag)
+		rTag.GET("/:id", tag.GetTagById)
 	}
 
 	r.Run(utils.HttpPort)

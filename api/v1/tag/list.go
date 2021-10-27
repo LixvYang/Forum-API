@@ -1,4 +1,4 @@
-package category
+package tag
 
 import (
 	v1 "mixindev/api/v1"
@@ -10,23 +10,23 @@ import (
 )
 
 type ListRequest struct {
-	Offset int `json:"offset"`
-	Limit  int `json:"limit"`
+	Offset int `form:"offset" json:"offset" xml:"offset"`
+	Limit  int `form:"limit" json:"limit" xml:"limit"`
 }
 
 type ListResponse struct {
-	TotalCount uint64               `json:"totalCount"`
-	List       []model.CategoryInfo `json:"list"`
+	TotalCount uint64          `json:"totalCount"`
+	List       []model.TagInfo `json:"list"`
 }
 
-func ListCategories(c *gin.Context) {
+func ListTags(c *gin.Context) {
 	var r ListRequest
 	if err := c.Bind(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
 		return
 	}
 
-	infos, count, err := service.ListCategories(r.Offset, r.Limit)
+	infos, count, err := service.ListTags(r.Offset, r.Limit)
 	if err != nil {
 		v1.SendResponse(c, err, nil)
 		return
