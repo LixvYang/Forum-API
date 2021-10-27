@@ -9,7 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func UpdateUser(c *gin.Context) {
+func UpdateUserById(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	var user model.User
 	if err := c.Bind(&user); err != nil {

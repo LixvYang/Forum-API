@@ -4,6 +4,7 @@ import (
 	"mixindev/api/v1/article"
 	"mixindev/api/v1/category"
 	"mixindev/api/v1/tag"
+	"mixindev/api/v1/menu"
 	"mixindev/api/v1/user"
 	"mixindev/utils"
 
@@ -22,7 +23,7 @@ func InitRouter() {
 		rUser.GET("/:id", user.GetUserById)
 		rUser.GET("", user.ListUsers)
 		rUser.DELETE("/:id", user.DeleteUser)
-		rUser.PUT("/:id", user.UpdateUser)
+		rUser.PUT("/:id", user.UpdateUserById)
 	}
 
 	//文章相关
@@ -48,6 +49,15 @@ func InitRouter() {
 		rTag.GET("", tag.ListTags)
 		rTag.DELETE("/:id", tag.DeleteTag)
 		rTag.GET("/:id", tag.GetTagById)
+	}
+
+	rMenu := r.Group("v1/menu")
+	{
+		rMenu.POST("", menu.AddMenu)
+		rMenu.GET("", menu.ListMenus)
+		rMenu.DELETE("/:id", menu.DeleteMenu)
+		rMenu.GET("/:id", menu.GetMenuById)
+		rMenu.PUT("/:id", menu.UpdateMenuById)
 	}
 
 	r.Run(utils.HttpPort)
