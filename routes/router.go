@@ -28,8 +28,13 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	r.POST("v1/login", user.Login)
 
 	r.GET("v1/auth/userinfo", user.GetUseInfo)
+	r.Use(middleware.AuthMiddleware())
+
 	rUser := r.Group("v1/user")
+	//auth 
+	// rUser.Use(middleware.AuthMiddleware())
 	{
+		// 登录鉴权后获取用户信息
 		rUser.POST("", user.AddUser)
 		rUser.GET("/:id", user.GetUserById)
 		rUser.GET("", user.ListUsers)
@@ -39,6 +44,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 
 	//文章相关
 	rArticle := r.Group("v1/article")
+	// rArticle.Use(middleware.AuthMiddleware())
 	{
 		rArticle.GET("/:id", article.GetArticleById)
 		rArticle.GET("", article.GetArticlesList)
@@ -47,6 +53,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	rCategory := r.Group("v1/category")
+	// rCategory.Use(middleware.AuthMiddleware()
 	{
 		rCategory.POST("", category.AddCategory)
 		rCategory.GET("", category.ListCategories)
@@ -55,6 +62,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	rTag := r.Group("v1/tag")
+	// rTag.Use(middleware.AuthMiddleware()
 	{
 		rTag.POST("", tag.AddTag)
 		rTag.GET("", tag.ListTags)
@@ -63,6 +71,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	rMenu := r.Group("v1/menu")
+	// rMenu.Use(middleware.AuthMiddleware()
 	{
 		rMenu.POST("", menu.AddMenu)
 		rMenu.GET("", menu.ListMenus)
@@ -72,6 +81,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 
 	rRole := r.Group("v1/role")
+	// rRole.Use(middleware.AuthMiddleware()
 	{
 		rRole.POST("", role.AddRole)
 		rRole.GET("", role.ListRoles)

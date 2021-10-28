@@ -10,6 +10,7 @@ import (
 )
 
 func main() {
+
 	model.InitDb()
 	// routes.InitRouter()
 
@@ -24,7 +25,7 @@ func main() {
 		// Cores.
 		g,
 		// Middlwares.
-		// middleware.Logging(),
+		middleware.Log(),
 		middleware.RequestId(),
 	)
 
