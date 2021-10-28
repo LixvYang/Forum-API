@@ -3,11 +3,12 @@ package routes
 import (
 	"mixindev/api/v1/article"
 	"mixindev/api/v1/category"
-	"mixindev/api/v1/tag"
 	"mixindev/api/v1/menu"
-	"mixindev/api/v1/user"
 	"mixindev/api/v1/role"
+	"mixindev/api/v1/tag"
+	"mixindev/api/v1/user"
 	"mixindev/utils"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
@@ -16,9 +17,13 @@ func InitRouter() {
 	gin.SetMode(utils.AppMode)
 	r := gin.Default()
 
+	r.NoRoute(func(c *gin.Context) {
+		c.String(http.StatusNotFound, "The incorrect API router.")
+	})
+
 	r.POST("v1/login", user.Login)
 
-	r.GET("v1/auth/userinfo",user.GetUseInfo)
+	r.GET("v1/auth/userinfo", user.GetUseInfo)
 	rUser := r.Group("v1/user")
 	{
 		rUser.POST("", user.AddUser)
