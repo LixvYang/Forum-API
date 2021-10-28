@@ -1,6 +1,7 @@
 package main
 
 import (
+	"mixindev/middleware"
 	"mixindev/model"
 	"mixindev/routes"
 	"mixindev/utils"
@@ -11,16 +12,21 @@ import (
 func main() {
 	model.InitDb()
 	// routes.InitRouter()
-	
+
 	// Set gin mode
 	gin.SetMode(utils.AppMode)
-	
-	
+
 	//Create gin engine
 	g := gin.New()
 
 	//Routes
-	routes.InitRouter(g)
+	routes.InitRouter(
+		// Cores.
+		g,
+		// Middlwares.
+		// middleware.Logging(),
+		middleware.RequestId(),
+	)
 
 	g.Run(utils.HttpPort)
 }
