@@ -7,16 +7,20 @@ import (
 	"mixindev/api/v1/role"
 	"mixindev/api/v1/tag"
 	"mixindev/api/v1/user"
-	"mixindev/utils"
+	"mixindev/middleware"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
 
-func InitRouter() {
-	gin.SetMode(utils.AppMode)
-	r := gin.Default()
-
+func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
+	// Middlewares
+	r.Use(gin.Recovery())
+	r.Use(middleware.NoCache)
+	r.Use(middleware.Options)
+	r.Use(middleware.Secure)
+	r.Use(mw...)
+	// 404 Handler
 	r.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API router.")
 	})
@@ -76,5 +80,5 @@ func InitRouter() {
 		rRole.PUT("/:id", role.UpdateRole)
 	}
 
-	r.Run(utils.HttpPort)
+	return r
 }

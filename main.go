@@ -3,9 +3,24 @@ package main
 import (
 	"mixindev/model"
 	"mixindev/routes"
+	"mixindev/utils"
+
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	model.InitDb()
-	routes.InitRouter()
+	// routes.InitRouter()
+	
+	// Set gin mode
+	gin.SetMode(utils.AppMode)
+	
+	
+	//Create gin engine
+	g := gin.New()
+
+	//Routes
+	routes.InitRouter(g)
+
+	g.Run(utils.HttpPort)
 }
