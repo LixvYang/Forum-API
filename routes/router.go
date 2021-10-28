@@ -18,6 +18,7 @@ func InitRouter() {
 
 	r.POST("v1/login", user.Login)
 
+	r.GET("v1/auth/userinfo",user.GetUseInfo)
 	rUser := r.Group("v1/user")
 	{
 		rUser.POST("", user.AddUser)
