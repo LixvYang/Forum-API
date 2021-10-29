@@ -38,16 +38,14 @@ func (a *Article) CreateArticle() error {
 }
 
 // Get article by id
-func GetArticleById(id int) (Article, error) {
-	var article Article
-	d := db.First(&article, id)
-	return article, d.Error
+func (a *Article) GetArticleById(id int) (*Article, error) {
+	d := db.First(&a, id)
+	return a, d.Error
 }
 
 // Delete article by id
-func DeleteArticle(id int) error {
-	var article Article
-	d := db.Where("id = ?", id).Delete(&article)
+func (a *Article) DeleteArticle(id int) error {
+	d := db.Where("id = ?", id).Delete(&a)
 	return d.Error
 }
 

@@ -41,10 +41,9 @@ func (c *Category) ListCategories(offset,limit int) ([]Category, int64, error) {
 }
 
 // 根据标签id获取标签数据.
-func GetCategoryById(id int) (Category, error) {
-	var category Category
-	d := db.First(&category, id)
-	return category, d.Error
+func (c *Category) GetCategoryById(id int) (*Category, error) {
+	d := db.First(&c, id)
+	return c, d.Error
 }
 
 // Delete category by id

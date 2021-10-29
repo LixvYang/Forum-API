@@ -11,16 +11,16 @@ import (
 
 func GetCategoryById(c *gin.Context) {
 	categoryId, _ := strconv.Atoi(c.Param("id"))
-
-	category, err := model.GetCategoryById(categoryId)
+	var category *model.Category
+	category, err := category.GetCategoryById(categoryId)
 	if err != nil {
-		v1.SendResponse(c,errmsg.ErrCategoryNotFound,nil)
+		v1.SendResponse(c, errmsg.ErrCategoryNotFound, nil)
 		return
 	}
 
 	v1.SendResponse(c,
 		nil,
 		&model.CategoryInfo{
-			Id: uint64(category.ID), 
+			Id:           uint64(category.ID),
 			CategoryName: category.CategoryName})
 }

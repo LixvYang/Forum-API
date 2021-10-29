@@ -6,6 +6,7 @@ import (
 
 func ListArticles(offset, limit int) ([]model.ArticleInfo, int64, error) {
 	var article *model.Article
+	var category *model.Category
 	articles, count, err := article.ListArticles(offset, limit)
 	if err != nil {
 		return nil, count, err
@@ -14,7 +15,7 @@ func ListArticles(offset, limit int) ([]model.ArticleInfo, int64, error) {
 	var articleList []model.ArticleInfo
 	for _, article := range articles {
 		user, uErr := model.GetUserById(article.UserId)
-		category, cErr := model.GetCategoryById(article.CategoryId)
+		category, cErr := category.GetCategoryById(article.CategoryId)
 		tag, tErr := model.GetTagById(article.TagId)
 		if uErr != nil || cErr != nil || tErr != nil {
 			return nil, count, err

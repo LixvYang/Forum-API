@@ -1,0 +1,1 @@
+time="2021-10-29 22:02:06" level=info Agent=PostmanRuntime/7.26.10 DataSize=176 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/auth/userinfo SpendTime="133 ms" status=200

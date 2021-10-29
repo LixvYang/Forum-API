@@ -11,7 +11,8 @@ import (
 
 func DeleteArticle(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	err := model.DeleteArticle(id)
+	var a *model.Article
+	err := a.DeleteArticle(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 	}

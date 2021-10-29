@@ -8,8 +8,9 @@ func ValidateCreateArticle(userId, categoryId, tagId int) (valid bool) {
 	if err != nil {
 		return false
 	}
+	var category *model.Category
 
-	_, err = model.GetCategoryById(categoryId)
+	_, err = category.GetCategoryById(categoryId)
 	if err != nil {
 		return false
 	}
