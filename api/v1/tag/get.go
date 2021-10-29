@@ -11,8 +11,8 @@ import (
 
 func GetTagById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-
-	tag, err := model.GetTagById(id)
+	var t *model.Tag
+	tag, err := t.GetTagById(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
 		return

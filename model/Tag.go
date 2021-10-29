@@ -17,10 +17,9 @@ type TagInfo struct {
 }
 
 // 根据标签id获取标签数据.
-func GetTagById(id int) (Tag, error) {
-	var tag Tag
-	d := db.First(&tag, id)
-	return tag, d.Error
+func (t *Tag) GetTagById(id int) (*Tag, error) {
+	d := db.First(&t, id)
+	return t, d.Error
 }
 
 // 创建新标签
@@ -29,7 +28,7 @@ func (t *Tag) CreateTag() error {
 }
 
 // 根据标签id删除标签
-func DeleteTag(id int) error {
+func (t *Tag) DeleteTag(id int) error {
 	var tag Tag
 	return db.Where("id = ?", id).Delete(&tag).Error
 }

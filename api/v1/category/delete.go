@@ -11,7 +11,8 @@ import (
 
 func DeleteCategory(c *gin.Context) {
 	CategoryId, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteCategory(CategoryId); err != nil {
+	var category *model.Category
+	if err := category.DeleteCategory(CategoryId); err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}

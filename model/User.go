@@ -27,16 +27,14 @@ func (u *User) AddUser() error {
 }
 
 // GetUserById gets an user by the user id.
-func GetUserById(id int) (User, error) {
-	var user User
-	d := db.First(&user, id)
-	return user, d.Error
+func (u *User) GetUserById(id int) (*User, error) {
+	d := db.First(&u, id)
+	return u, d.Error
 }
 
 //Delete user
-func DeleteUser(id int) error {
-	var user User
-	return db.Delete(&user, id).Error
+func (u *User) DeleteUser(id int) error {
+	return db.Delete(&u, id).Error
 }
 
 func (u *User) UpdateUser() error {

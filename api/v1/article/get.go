@@ -13,14 +13,16 @@ import (
 func GetArticleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var art *model.Article
-	var category *model.Category
+	var cate *model.Category
+	var tag *model.Tag
+	var user *model.User
 	article, err := art.GetArticleById(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrArticleNotFound, nil)
 	}
-	user, uErr := model.GetUserById(article.UserId)
-	category, cErr := category.GetCategoryById(article.CategoryId)
-	tag, tErr := model.GetTagById(article.TagId)
+	user, uErr := user.GetUserById(article.UserId)
+	category, cErr := cate.GetCategoryById(article.CategoryId)
+	tag, tErr := tag.GetTagById(article.TagId)
 	if uErr != nil || cErr != nil || tErr != nil {
 		v1.SendResponse(c, errmsg.ErrArticleNotFound, nil)
 		return

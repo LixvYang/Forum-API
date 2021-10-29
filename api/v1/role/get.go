@@ -11,7 +11,8 @@ import (
 
 func GetRoleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	l, err := model.GetRoleById(id)
+	var role *model.Role
+	l, err := role.GetRoleById(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrRoleGet, nil)
 		return

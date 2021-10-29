@@ -11,7 +11,8 @@ import (
 
 func DeleteUser(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
-	err := model.DeleteUser(userId)
+	var u *model.User
+	err := u.DeleteUser(userId)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return

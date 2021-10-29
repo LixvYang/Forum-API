@@ -11,7 +11,8 @@ import (
 
 func DeleteTag(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteTag(id); err != nil {
+	var tag *model.Tag
+	if err := tag.DeleteTag(id); err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}

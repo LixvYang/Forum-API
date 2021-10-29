@@ -11,7 +11,8 @@ import (
 
 func GetMenuById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	menu, err := model.GetMenuById(id)
+	var m *model.Menu
+	menu, err := m.GetMenuById(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrMenuGet, nil)
 		return
@@ -24,5 +25,4 @@ func GetMenuById(c *gin.Context) {
 						Path: menu.Path, 
 						Method: menu.Method,
 					})
-
 }

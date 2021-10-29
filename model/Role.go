@@ -17,16 +17,14 @@ type RoleInfo struct {
 }
 
 //get role by id
-func GetRoleById(id int) (Role, error) {
-	var role Role
-	d := db.First(&role, id)
-	return role, d.Error
+func (r *Role) GetRoleById(id int) (*Role, error) {
+	d := db.First(&r, id)
+	return r, d.Error
 }
 
 //delete role
-func DeleteRole(id int) error {
-	var role Role
-	return db.Delete(&role, id).Error
+func (r *Role) DeleteRole(id int) error {
+	return db.Delete(&r, id).Error
 }
 
 //create role

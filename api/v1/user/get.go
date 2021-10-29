@@ -12,8 +12,9 @@ import (
 
 func GetUserById(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
+	var u *model.User
 
-	user, err := model.GetUserById(userId)
+	user, err := u.GetUserById(userId)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
 		return
@@ -28,7 +29,8 @@ func GetUserById(c *gin.Context) {
 
 func GetUseInfo(c *gin.Context) {
 	res, _ := token.ParseRequest(c)
-	user, err := model.GetUserById(int(res.ID))
+	var u *model.User
+	user, err := u.GetUserById(int(res.ID))
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
 		return

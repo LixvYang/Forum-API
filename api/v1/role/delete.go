@@ -11,7 +11,8 @@ import (
 
 func DeleteRole(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteRole(id); err != nil {
+	var role *model.Role
+	if err := role.DeleteRole(id); err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}

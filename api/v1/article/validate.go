@@ -4,7 +4,9 @@ import "mixindev/model"
 
 // check article felid error?
 func ValidateCreateArticle(userId, categoryId, tagId int) (valid bool) {
-	_, err := model.GetUserById(userId)
+	var user  *model.User
+
+	_, err := user.GetUserById(userId)
 	if err != nil {
 		return false
 	}
@@ -15,7 +17,8 @@ func ValidateCreateArticle(userId, categoryId, tagId int) (valid bool) {
 		return false
 	}
 
-	_, err = model.GetTagById(tagId)
+	var tag *model.Tag
+	_, err = tag.GetTagById(tagId)
 
 	
 	return err == nil

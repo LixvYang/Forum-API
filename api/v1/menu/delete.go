@@ -11,7 +11,8 @@ import (
 
 func DeleteMenu(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
-	if err := model.DeleteMenu(id); err != nil {
+	var m *model.Menu
+	if err := m.DeleteMenu(id); err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}

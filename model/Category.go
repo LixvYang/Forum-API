@@ -47,9 +47,8 @@ func (c *Category) GetCategoryById(id int) (*Category, error) {
 }
 
 // Delete category by id
-func DeleteCategory(id int) error {
-	var category Category
-	return db.Where("id = ?", id).Delete(&category).Error
+func (c *Category) DeleteCategory(id int) error {
+	return db.Where("id = ?", id).Delete(&c).Error
 }
 
 

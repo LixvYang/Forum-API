@@ -21,10 +21,9 @@ type MenuInfo struct {
 }
 
 //Check menu by id
-func GetMenuById(id int) (Menu, error) {
-	var menu Menu
-	d := db.First(&menu, id)
-	return menu, d.Error
+func (m *Menu) GetMenuById(id int) (*Menu, error) {
+	d := db.First(&m, id)
+	return m, d.Error
 }
 
 // create menu
@@ -33,9 +32,8 @@ func (m *Menu) CreateMenu() error {
 }
 
 //delete menu
-func DeleteMenu(id int) error {
-	var menu Menu
-	return db.Delete(&menu, id).Error
+func (m *Menu) DeleteMenu(id int) error {
+	return db.Delete(&m, id).Error
 }
 
 //update menu
