@@ -9,6 +9,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary Update a user info by the user identifier
+// @Description Update a user by ID
+// @Tags user
+// @Accept  json
+// @Produce  json
+// @Param id path int true "The user's database id index num"
+// @Param user body model.User true "The user info"
+// @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
+// @Router /v1/user/{id} [put]
 func UpdateUserById(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	var user model.User

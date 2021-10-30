@@ -19,6 +19,16 @@ type ListResponse struct {
 	List       []model.TagInfo `json:"list"`
 }
 
+
+// @Summary 获取标签列表
+// @Description 获取标签列表
+// @Tags tag
+// @Accept  json
+// @Produce  json
+// @Param   offset      query    int     false     "Offset"
+// @Param   limit      query    int     false      "Limit"
+// @Success 200 {object} tag.ListResponse "{"code":0,"message":"OK","data":{"totalCount":1,"list":[{"id":0,"tag_name":"..."}]}}"
+// @Router /v1/tag [get]
 func ListTags(c *gin.Context) {
 	var r ListRequest
 	if err := c.Bind(&r); err != nil {

@@ -42,7 +42,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// rUser.Use(middleware.AuthMiddleware())
 	{
 		// 登录鉴权后获取用户信息
-		rUser.POST("", user.AddUser)
+		rUser.POST("/add", user.AddUser)
 		rUser.GET("/:id", user.GetUserById)
 		rUser.GET("", user.ListUsers)
 		rUser.DELETE("/:id", user.DeleteUser)
@@ -71,7 +71,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	rTag := r.Group("v1/tag")
 	// rTag.Use(middleware.AuthMiddleware()
 	{
-		rTag.POST("", tag.AddTag)
+		rTag.POST("/add", tag.AddTag)
 		rTag.GET("", tag.ListTags)
 		rTag.DELETE("/:id", tag.DeleteTag)
 		rTag.GET("/:id", tag.GetTagById)
@@ -80,7 +80,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	rMenu := r.Group("v1/menu")
 	// rMenu.Use(middleware.AuthMiddleware()
 	{
-		rMenu.POST("", menu.AddMenu)
+		rMenu.POST("/add", menu.AddMenu)
 		rMenu.GET("", menu.ListMenus)
 		rMenu.DELETE("/:id", menu.DeleteMenu)
 		rMenu.GET("/:id", menu.GetMenuById)
@@ -90,7 +90,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	rRole := r.Group("v1/role")
 	// rRole.Use(middleware.AuthMiddleware()
 	{
-		rRole.POST("", role.AddRole)
+		rRole.POST("/add", role.AddRole)
 		rRole.GET("", role.ListRoles)
 		rRole.DELETE("/:id", role.DeleteRole)
 		rRole.GET("/:id", role.GetRoleById)

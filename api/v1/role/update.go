@@ -9,6 +9,16 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+
+// @Summary 更新角色数据
+// @Description 更新角色数据
+// @Tags role
+// @Accept  json
+// @Produce  json
+// @Param id path int true "角色数据的数据库id"
+// @Param role body model.Role true "role"
+// @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
+// @Router /v1/role/{id} [put]
 func UpdateRole(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var role model.Role

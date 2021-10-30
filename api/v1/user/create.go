@@ -17,6 +17,14 @@ type CreateResponse struct {
 	Username string `json:"username"`
 }
 
+// @Summary Add new user to the database
+// @Description Add a new user
+// @Tags user
+// @Accept  json
+// @Produce  json
+// @Param user body user.CreateRequest true "Create a new user"
+// @Success 200 {object} user.CreateResponse "{"code":0,"message":"OK","data":{"username":"Lixv"}}"
+// @Router /v1/user/add [post]
 func AddUser(c *gin.Context) {
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {

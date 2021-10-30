@@ -17,6 +17,14 @@ type CreateResponse struct {
 	TagName string `json:"tag_name"`
 }
 
+// @Summary 创建标签
+// @Description 创建标签
+// @Tags tag
+// @Accept  json
+// @Produce  json
+// @Param tags body tag.CreateRequest true "创建新标签"
+// @Success 200 {object} tag.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":"..."}}"
+// @Router /v1/tag/add [post]
 func AddTag(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {

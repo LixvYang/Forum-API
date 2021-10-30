@@ -9,6 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary 获取单个菜单
+// @Description 获取单个菜单
+// @Tags menu
+// @Accept  json
+// @Produce  json
+// @Param id path int true "菜单数据的数据库id"
+// @Success 200 {object} model.MenuInfo "{"code":0,"message":"OK","data":{"id":0,"category_name":"..."}}"
+// @Router /v1/menu/{id} [get]
 func GetMenuById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var m *model.Menu

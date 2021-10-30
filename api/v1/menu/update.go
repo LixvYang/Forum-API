@@ -10,6 +10,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary 更改菜单
+// @Description 更改菜单
+// @Tags menu
+// @Accept  json
+// @Produce  json
+// @Param id path int true "菜单数据的数据库id"
+// @Param menu body model.Menu true "The user info"
+// @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
+// @Router /v1/menu/{id} [put]
 func UpdateMenuById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var menu model.Menu

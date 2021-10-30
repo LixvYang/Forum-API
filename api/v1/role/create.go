@@ -18,6 +18,14 @@ type CreateResponse struct {
 	Name string `json:"name"`
 }
 
+// @Summary 创建角色
+// @Description 创建角色
+// @Tags role
+// @Accept  json
+// @Produce  json
+// @Param role body role.CreateRequest true "创建角色"
+// @Success 200 {object} role.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":"..."}}"
+// @Router /v1/role/add [post]
 func AddRole(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {

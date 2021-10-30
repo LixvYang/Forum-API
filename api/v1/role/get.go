@@ -9,6 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// @Summary 获取单个角色
+// @Description 获取单个角色
+// @Tags role
+// @Accept  json
+// @Produce  json
+// @Param id path int true "角色数据的数据库id"
+// @Success 200 {object} model.RoleInfo "{"code":0,"message":"OK","data":{"id":0,"category_name":"..."}}"
+// @Router /v1/role/{id} [get]
 func GetRoleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var role *model.Role

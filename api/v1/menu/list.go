@@ -19,6 +19,15 @@ type ListResponse struct {
 	List       []model.MenuInfo `json:"list"`
 }
 
+// @Summary 获取菜单列表
+// @Description 获取菜单列表
+// @Tags menu
+// @Accept  json
+// @Produce  json
+// @Param   offset      query    int     false     "Offset"
+// @Param   limit      query    int     false      "Limit"
+// @Success 200 {object} menu.ListResponse "{"code":0,"message":"OK","data":{"totalCount":1,"list":[{"id":0,"tag_name":"..."}]}}"
+// @Router /v1/menu [get]
 func ListMenus(c *gin.Context) {
 	var r ListRequest
 	if err := c.ShouldBindQuery(&r); err != nil {

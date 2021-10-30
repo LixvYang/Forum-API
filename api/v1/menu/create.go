@@ -21,6 +21,14 @@ type CreateResponse struct {
 	Method string `json:"method"`
 }
 
+// @Summary 创建菜单
+// @Description 创建菜单
+// @Tags menu
+// @Accept  json
+// @Produce  json
+// @Param menu body menu.CreateRequest true "创建新标签"
+// @Success 200 {object} menu.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":".."}}"
+// @Router /v1/menu/add [post]
 func AddMenu(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {
