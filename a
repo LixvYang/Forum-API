@@ -1,0 +1,185 @@
+[33mcommit 587e4c81f871a2bf58d7f00c9cb924175b21753f[m[33m ([m[1;36mHEAD -> [m[1;32mdev[m[33m, [m[1;31morigin/dev[m[33m)[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sat Oct 30 16:52:46 2021 +0800
+
+    update sd api
+
+[33mcommit 6a65d659ea790423dbf662fcbe0c06b894af56d8[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sat Oct 30 15:47:03 2021 +0800
+
+    add swag doc
+
+[33mcommit 99d8cb9e98715a833e47e1c6ae983a967a827784[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sat Oct 30 10:58:58 2021 +0800
+
+    update docs
+
+[33mcommit e18acbba29de0a073f8848529629ba0627b33df5[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 29 23:10:14 2021 +0800
+
+    update
+
+[33mcommit 93683cbe3149b6737bfac1799759250e2bf8e044[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 29 22:03:20 2021 +0800
+
+    update oop
+
+[33mcommit 8c5bd4713c68ade6911ea18cf431ab2003d7fa49[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 29 21:40:11 2021 +0800
+
+    update
+
+[33mcommit 6f30a2aaa4192b7fb9fc5e789758b93d75f1c07e[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 20:44:33 2021 +0800
+
+    delete casbin
+
+[33mcommit d6ad97aeb8b55a78ed047cf49c1b94de988754bb[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 20:43:57 2021 +0800
+
+    complete api
+
+[33mcommit 7649deb0ec2f58f86b44d8a868cdc13ee9d400fa[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 19:30:26 2021 +0800
+
+    update middleware
+
+[33mcommit fc43892e6bde03ffb1b8c8e259ddfac40599bc62[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 18:26:36 2021 +0800
+
+    update header middleware
+
+[33mcommit 868728da8d30ac83c12caaf8ebc9884eb079f028[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 10:40:56 2021 +0800
+
+    update norouter
+
+[33mcommit b7c270f651d9077029cf8d9a4d747fb9f834b06f[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 28 10:27:45 2021 +0800
+
+    update
+
+[33mcommit 8daaeb95bb545b32a1cd35b4c127e81b29c97682[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Wed Oct 27 16:53:54 2021 +0800
+
+    update role model
+
+[33mcommit 6a872bc4277419f7bdf5161bca78a0a4c0231de8[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Wed Oct 27 16:16:41 2021 +0800
+
+    update menu
+
+[33mcommit 2c9f43c9498d643e8b7b4cccfdd945a9a0f439e9[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Wed Oct 27 09:24:46 2021 +0800
+
+    update tag model
+
+[33mcommit 9e81bac00e0e56a296a567c9be408b4e8ea2b5ef[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Wed Oct 27 08:50:57 2021 +0800
+
+    add category model
+
+[33mcommit bc30d68a3d0d2d4072989cb26ae07e6a76afa160[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Tue Oct 26 21:29:46 2021 +0800
+
+    update login
+
+[33mcommit b7b03bb23423d550c4957f00ed487986b75d9223[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Tue Oct 26 20:30:27 2021 +0800
+
+    add update user
+
+[33mcommit 06321e3c31b95d0972d3a3a3ad6f2601d2207e7d[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Tue Oct 26 19:39:15 2021 +0800
+
+    update user
+
+[33mcommit d342d57d1a12c93d74a0f90769ba7a8c9b4dcf8c[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Tue Oct 26 19:38:54 2021 +0800
+
+    update user
+
+[33mcommit 87ee86193de1b7e8a12a3c969b3a671bbde4f178[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Mon Oct 25 21:42:52 2021 +0800
+
+    compelete article interface
+
+[33mcommit 6af5d26e637652d7a9a82f8b96b138b42ac8feff[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Mon Oct 25 15:37:15 2021 +0800
+
+    update model
+
+[33mcommit b5e10225c1edcfa583d6d6ffaf4358bd0c8ecaa3[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sun Oct 24 21:51:38 2021 +0800
+
+    update model
+
+[33mcommit 53926cc9a4f4a283203d19a273aa71ad3cb28a83[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sat Oct 23 21:27:17 2021 +0800
+
+    update
+
+[33mcommit fdcae87f93c6626f65b694428105de6e6e0870fb[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Sat Oct 23 20:51:54 2021 +0800
+
+    update model
+
+[33mcommit 4544d28b82fa51358b9ae4d2a279b03e76272886[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 22 21:14:43 2021 +0800
+
+    update
+
+[33mcommit e9f127c49773b15e21b749c2d1c02a463d00cc29[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 22 10:39:50 2021 +0800
+
+    update model
+
+[33mcommit e2cf53c4908804479685ec1e5fb98057739f6e81[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Fri Oct 22 10:14:39 2021 +0800
+
+    add db model
+
+[33mcommit ed3b90b964bfbdb928951acef321c29be93692c0[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Thu Oct 21 21:44:04 2021 +0800
+
+    init router
+
+[33mcommit 49d0b8af18d1c29e52e232bb7d4ed6455864594f[m
+Author: lixin yang <2690688423@qq.com>
+Date:   Wed Oct 20 16:37:25 2021 +0800
+
+    updage database
+
+[33mcommit 2274e0cf471897c13d73fea5beb44469df8e1f83[m
+Author: Lixin <66065674+LixvYang@users.noreply.github.com>
+Date:   Sat Oct 16 21:25:19 2021 +0800
+
+    Initial commit

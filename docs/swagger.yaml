@@ -290,6 +290,66 @@ info:
   title: Mixindev API
   version: "1.0"
 paths:
+  /sd/cpu:
+    get:
+      consumes:
+      - application/json
+      description: Checks the cpu usage
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'CRITICAL - Load average: 1.78, 1.99, 2.02 | Cores: 2'
+          schema:
+            type: string
+      summary: Checks the cpu usage
+      tags:
+      - sd
+  /sd/disk:
+    get:
+      consumes:
+      - application/json
+      description: Checks the disk usage
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'OK - Free space: 17233MB (16GB) / 51200MB (50GB) | Used: 33%'
+          schema:
+            type: string
+      summary: Checks the disk usage
+      tags:
+      - sd
+  /sd/health:
+    get:
+      consumes:
+      - application/json
+      description: Shows OK as the ping-pong result
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Shows OK as the ping-pong result
+      tags:
+      - sd
+  /sd/ram:
+    get:
+      consumes:
+      - application/json
+      description: Checks the ram usage
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: 'OK - Free space: 402MB (0GB) / 8192MB (8GB) | Used: 4%'
+          schema:
+            type: string
+      summary: Checks the ram usage
+      tags:
+      - sd
   /v1/article:
     get:
       consumes:
