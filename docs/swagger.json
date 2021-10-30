@@ -12,6 +12,98 @@
     },
     "host": "localhost:3000",
     "paths": {
+        "/sd/cpu": {
+            "get": {
+                "description": "Checks the cpu usage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Checks the cpu usage",
+                "responses": {
+                    "200": {
+                        "description": "CRITICAL - Load average: 1.78, 1.99, 2.02 | Cores: 2",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/sd/disk": {
+            "get": {
+                "description": "Checks the disk usage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Checks the disk usage",
+                "responses": {
+                    "200": {
+                        "description": "OK - Free space: 17233MB (16GB) / 51200MB (50GB) | Used: 33%",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/sd/health": {
+            "get": {
+                "description": "Shows OK as the ping-pong result",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Shows OK as the ping-pong result",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/sd/ram": {
+            "get": {
+                "description": "Checks the ram usage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Checks the ram usage",
+                "responses": {
+                    "200": {
+                        "description": "OK - Free space: 402MB (0GB) / 8192MB (8GB) | Used: 4%",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/v1/article": {
             "get": {
                 "description": "获取文章列表",
