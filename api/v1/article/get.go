@@ -9,7 +9,14 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-//用文章ID获取单页信息
+// @Summary 用文章id获取单篇信息
+// @Description 用文章id获取单篇文章信息
+// @Tags article
+// @Accept  json
+// @Produce  json
+// @Param id path string true "Id"
+// @Success 200 {object} model.ArticleInfo "{"code":0,"message":"OK","data":{}}"
+// @Router /v1/article/{id} [get]
 func GetArticleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var art *model.Article

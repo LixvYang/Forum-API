@@ -1,0 +1,278 @@
+definitions:
+  article.CreateRequest:
+    properties:
+      category_id:
+        type: integer
+      content:
+        type: string
+      tag_id:
+        type: integer
+      title:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  article.ListResponse:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/model.ArticleInfo'
+        type: array
+      totalCount:
+        type: integer
+    type: object
+  category.CreateRequest:
+    properties:
+      category_name:
+        type: string
+    type: object
+  category.CreateResponse:
+    properties:
+      category_name:
+        type: string
+    type: object
+  category.ListResponse:
+    properties:
+      list:
+        items:
+          $ref: '#/definitions/model.CategoryInfo'
+        type: array
+      totalCount:
+        type: integer
+    type: object
+  model.ArticleInfo:
+    properties:
+      avatar:
+        type: string
+      category_id:
+        type: integer
+      category_name:
+        type: string
+      content:
+        type: string
+      created_at:
+        type: string
+      id:
+        type: integer
+      tag_id:
+        type: integer
+      tag_name:
+        type: string
+      title:
+        type: string
+      updated_at:
+        type: string
+      user_id:
+        type: integer
+      username:
+        type: string
+    type: object
+  model.CategoryInfo:
+    properties:
+      category_name:
+        type: string
+      id:
+        type: integer
+    type: object
+  v1.Response:
+    properties:
+      code:
+        type: integer
+      data: {}
+      message:
+        type: string
+    type: object
+host: localhost:3000
+info:
+  contact:
+    email: yanglixin621@gmail.com
+    name: Lixv
+    url: http://www.swagger.io/support
+  description: mixindev API doc
+  title: Mixindev API
+  version: "1.0"
+paths:
+  /v1/article:
+    get:
+      consumes:
+      - application/json
+      description: 获取文章列表
+      parameters:
+      - description: Offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{"totalCount":1,"list":[]}'
+          schema:
+            $ref: '#/definitions/article.ListResponse'
+      summary: 获取文章列表
+      tags:
+      - article
+  /v1/article/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据标签id删除文章
+      parameters:
+      - description: 文章的数据库id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":null}'
+          schema:
+            $ref: '#/definitions/v1.Response'
+      summary: 根据标签id删除文章
+      tags:
+      - article
+    get:
+      consumes:
+      - application/json
+      description: 用文章id获取单篇文章信息
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{}}'
+          schema:
+            $ref: '#/definitions/model.ArticleInfo'
+      summary: 用文章id获取单篇信息
+      tags:
+      - article
+  /v1/article/add:
+    post:
+      consumes:
+      - application/json
+      description: 创建文章
+      parameters:
+      - description: 创建文章
+        in: body
+        name: article
+        required: true
+        schema:
+          $ref: '#/definitions/article.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":null}'
+          schema:
+            $ref: '#/definitions/v1.Response'
+      summary: 创建文章
+      tags:
+      - article
+  /v1/category:
+    get:
+      consumes:
+      - application/json
+      description: 获取分类列表
+      parameters:
+      - description: Offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - description: Limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{"totalCount":1,"list":[{"id":0,"category_name":"前端"}]}}'
+          schema:
+            $ref: '#/definitions/category.ListResponse'
+      summary: 获取分类列表
+      tags:
+      - category
+  /v1/category/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: 根据标签id删除分类
+      parameters:
+      - description: 标签数据的数据库id
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":null}'
+          schema:
+            $ref: '#/definitions/v1.Response'
+      summary: 根据标签id删除分类
+      tags:
+      - category
+    get:
+      consumes:
+      - application/json
+      description: 用分类id获取单个分类信息
+      parameters:
+      - description: Id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{"id":0,"category_name":".."}}'
+          schema:
+            $ref: '#/definitions/model.CategoryInfo'
+      summary: 用分类id获取单个分类信息
+      tags:
+      - category
+  /v1/category/add:
+    post:
+      consumes:
+      - application/json
+      description: 创建分类
+      parameters:
+      - description: 创建新标签
+        in: body
+        name: tag
+        required: true
+        schema:
+          $ref: '#/definitions/category.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":{"category_name":".."}}'
+          schema:
+            $ref: '#/definitions/category.CreateResponse'
+      summary: 创建分类
+      tags:
+      - category
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

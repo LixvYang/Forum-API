@@ -17,6 +17,14 @@ type CreateRequest struct {
 	UserId     int    `json:"user_id"`
 }
 
+// @Summary 创建文章
+// @Description 创建文章
+// @Tags article
+// @Accept  json
+// @Produce  json
+// @Param article body article.CreateRequest true "创建文章"
+// @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
+// @Router /v1/article/add [post]
 func AddArticle(c *gin.Context) {
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {

@@ -19,6 +19,15 @@ type ListResponse struct {
 	List       []model.ArticleInfo `json:"list"`
 }
 
+// @Summary 获取文章列表
+// @Description 获取文章列表
+// @Tags article
+// @Accept  json
+// @Produce  json
+// @Param   offset      query    int     true     "Offset"
+// @Param   limit      query    int     true      "Limit"
+// @Success 200 {object} article.ListResponse "{"code":0,"message":"OK","data":{"totalCount":1,"list":[]}"
+// @Router /v1/article [get]
 func GetArticlesList(c *gin.Context) {
 	var r ListRequest
 	if err := c.Bind(&r); err != nil {
