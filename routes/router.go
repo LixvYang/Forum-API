@@ -58,6 +58,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		rArticle.GET("", article.GetArticlesList)
 		rArticle.DELETE("/:id", article.DeleteArticle)
 		rArticle.POST("/add", article.AddArticle)
+		rArticle.PUT(":id",article.UpdateArticleById)
 	}
 
 	rCategory := r.Group("v1/category")
@@ -104,6 +105,8 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		rSd.GET("/disk", sd.DiskCheck)
 		rSd.GET("/cpu", sd.CPUCheck)
 		rSd.GET("/ram", sd.RAMCheck)
+		rSd.GET("net",sd.NetCheck)
+		rSd.GET("/host",sd.HostCheck)
 	}
 
 	return r

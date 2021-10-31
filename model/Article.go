@@ -49,6 +49,11 @@ func (a *Article) DeleteArticle(id int) error {
 	return d.Error
 }
 
+// Update article by id
+func (a *Article) UpdateArticleById() error {
+	return db.Omit("created_at").Save(&a).Error
+}
+
 // Get articles list
 func (a *Article) ListArticles(offset, limit int) ([]Article, int64, error) {
 	if limit == 0 {
