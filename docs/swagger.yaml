@@ -356,6 +356,36 @@ paths:
       summary: Shows OK as the ping-pong result
       tags:
       - sd
+  /sd/host:
+    get:
+      consumes:
+      - application/json
+      description: Checks the host message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Checks the host message
+      tags:
+      - sd
+  /sd/net:
+    get:
+      consumes:
+      - application/json
+      description: Checks the net message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Checks the net message
+      tags:
+      - sd
   /sd/ram:
     get:
       consumes:

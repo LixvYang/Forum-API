@@ -81,6 +81,52 @@
                 }
             }
         },
+        "/sd/host": {
+            "get": {
+                "description": "Checks the host message",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Checks the host message",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/sd/net": {
+            "get": {
+                "description": "Checks the net message",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sd"
+                ],
+                "summary": "Checks the net message",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/sd/ram": {
             "get": {
                 "description": "Checks the ram usage",
