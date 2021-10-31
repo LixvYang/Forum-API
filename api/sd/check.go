@@ -9,6 +9,8 @@ import (
 	"github.com/shirou/gopsutil/disk"
 	"github.com/shirou/gopsutil/load"
 	"github.com/shirou/gopsutil/mem"
+	"github.com/shirou/gopsutil/host"
+	"github.com/shirou/gopsutil/net"
 )
 
 const (
@@ -120,4 +122,36 @@ func RAMCheck(c *gin.Context) {
 
 	message := fmt.Sprintf("%s - Free space: %dMB (%dGB) / %dMB (%dGB) | Used: %d%%", text, usedMB, usedGB, totalMB, totalGB, usedPercent)
 	c.String(status, "\n"+message)
+}
+
+// @Summary Checks the host message
+// @Description Checks the host message
+// @Tags sd
+// @Accept  json
+// @Produce  json
+// @Success 200 {string} plain hostname : LAPTOP | Platform : Microsoft Windows 10 Home China | KernelArch : x86_64
+// @Router /sd/host [get]
+func HostCheck(c *gin.Context)  {
+	status := http.StatusOK
+
+	hInfo, _ := host.Info()
+	message := fmt.Sprintf("hostname : %s | Platform : %s | KernelArch : %s",hInfo.Hostname,hInfo.Platform,hInfo.KernelArch)
+	c.String(status, "\n" + message)
+}
+
+// @Summary Checks the net message
+// @Description Checks the net message
+// @Tags sd
+// @Accept  json
+// @Produce  json
+// @Success 200 {string} plain WLAN BytesSent : 9328315 | BytesRecv : 87317530 | packetsSent : 65301 |  packageRecv : 81460
+// @Router /sd/net [get]
+func NetCheck(c *gin.Context)  {
+	infoN, _ := net.IOCounters(true)
+	status := http.StatusOK
+
+	for _, v := range infoN {
+		message := fmt.Sprintf("%v BytesSent : %v | BytesRecv : %v | packetsSent : %v |  packageRecv : %v\n", v.Name, v.BytesSent, v.BytesRecv,v.PacketsSent,v.PacketsRecv)
+		c.String(status, "\n" + message)
+	}
 }

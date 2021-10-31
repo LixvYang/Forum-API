@@ -79,6 +79,27 @@ definitions:
       totalCount:
         type: integer
     type: object
+  model.Article:
+    properties:
+      categoryId:
+        type: integer
+      content:
+        type: string
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      tagId:
+        type: integer
+      title:
+        type: string
+      updatedAt:
+        type: string
+      userId:
+        type: integer
+    type: object
   model.ArticleInfo:
     properties:
       avatar:
@@ -335,6 +356,36 @@ paths:
       summary: Shows OK as the ping-pong result
       tags:
       - sd
+  /sd/host:
+    get:
+      consumes:
+      - application/json
+      description: Checks the host message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Checks the host message
+      tags:
+      - sd
+  /sd/net:
+    get:
+      consumes:
+      - application/json
+      description: Checks the net message
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Checks the net message
+      tags:
+      - sd
   /sd/ram:
     get:
       consumes:
@@ -415,6 +466,32 @@ paths:
           schema:
             $ref: '#/definitions/model.ArticleInfo'
       summary: 用文章id获取单篇信息
+      tags:
+      - article
+    put:
+      consumes:
+      - application/json
+      description: 更改文章
+      parameters:
+      - description: 菜单数据的数据库id
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: The article info
+        in: body
+        name: menu
+        required: true
+        schema:
+          $ref: '#/definitions/model.Article'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: '{"code":0,"message":"OK","data":null}'
+          schema:
+            $ref: '#/definitions/v1.Response'
+      summary: 更改文章
       tags:
       - article
   /v1/article/add:
