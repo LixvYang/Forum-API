@@ -1,12 +1,4 @@
-/*
-分析需求_:
-文章
-用户
-评论
-种类
-个人信息
-*/
-
+-- mysql ...
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user`
 (
@@ -21,7 +13,6 @@ CREATE TABLE `user`
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 INSERT INTO `user`  VALUES (1, 'admin', '$2a$10$K3DRY94amW.0Shce.5FsmuDqjKPzQczll.s6fHA361yPJ0le1Igr.','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmb_j0g0GkHwuF42L8gNpJtSrT10kRQyEMvQ&usqp=CAU','2021-10-22 17:05:14.764', NULL , NULL);
 INSERT INTO `user`  VALUES (2, 'civy', '$2a$10$K3DRY94amW.0Shce.5FsmuDqjKPzQczll.s6fHA361yPJ0le1Igr.','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmb_j0g0GkHwuF42L8gNpJtSrT10kRQyEMvQ&usqp=CAU','2021-10-24 17:05:14.764', NULL , NULL);
-
 
 -- ----------------------------
 -- Table structure for role
