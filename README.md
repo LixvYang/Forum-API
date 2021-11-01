@@ -22,6 +22,7 @@ git clone git@github.com:LixvYang/Forum-API.git
 > _**db/db.sql must be used.**_
 
 - For local, set the _DbHost_ in the `config/config.ini`
+- And config your DB password
   ```
   DbHost = 127.0.0.1
   ```
