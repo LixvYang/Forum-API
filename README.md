@@ -27,8 +27,6 @@ git clone git@github.com:LixvYang/Forum-API.git
   ```
 
 > In the root directory, run the command.
-> 
-> Swaggo init
 ```
 swag init --parseDependency --parseInternal
 ```
