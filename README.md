@@ -11,6 +11,9 @@
 - [GORM](http://gorm.io).
 - [Swag](https://github.com/swaggo/swag)
 
+Db 
+![DB](db/db.png)
+
 ### Install
 #### Clone
 ```
