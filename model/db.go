@@ -10,10 +10,12 @@ import (
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 	"gorm.io/gorm/schema"
+	"github.com/go-redis/redis"
 )
 
 var db *gorm.DB
 var err error
+var RedisClient *redis.Client
 
 func InitDb() {
 
@@ -52,4 +54,12 @@ func InitDb() {
 
 	// SetConnMaxLifetiment 设置连接的最大可复用时间。
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
+
+	RedisClient = redis.NewClient(&redis.Options{
+		Addr: "localhost:6379",
+		Password: "",
+		DB: 0,
+	 })
+	 status := RedisClient.Ping()
+	 fmt.Println(status)
 }
