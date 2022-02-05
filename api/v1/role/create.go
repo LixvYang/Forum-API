@@ -26,7 +26,7 @@ type CreateResponse struct {
 // @Param role body role.CreateRequest true "创建角色"
 // @Success 200 {object} role.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":"..."}}"
 // @Router /v1/role/add [post]
-func AddRole(c *gin.Context) {
+func (roleHandler *RoleHandler) AddRole(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
@@ -44,6 +44,7 @@ func AddRole(c *gin.Context) {
 	}
 
 	rsp := CreateResponse(r)
+	roleHandler.DeleteRoleFromRedis()
 
 	// Show the user information.
 	v1.SendResponse(c, nil, rsp)

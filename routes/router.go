@@ -19,8 +19,9 @@ import (
 	"github.com/swaggo/gin-swagger/swaggerFiles"
 	"github.com/gin-gonic/gin"
 )
+// var tagHandler *tag.TagHandler
+// var userHandler *user.UserHandler
 
-var userHandler *user.UserHandler
 
 func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 
@@ -44,7 +45,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	r.GET("v1/auth/userinfo", user.GetUseInfo)
 	// r.Use(middleware.AuthMiddleware())
 
-	userHandler = user.NewUserHandler(ctx, model.RedisClient)
+	userHandler := user.NewUserHandler(ctx, model.RedisClient)
 	rUser := r.Group("v1/user")
 	//auth 
 	// rUser.Use(middleware.AuthMiddleware())
@@ -77,33 +78,36 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		rCategory.GET("/:id", category.GetCategoryById)
 	}
 
+	tagHandler := tag.NewTagHandler(ctx, model.RedisClient)
 	rTag := r.Group("v1/tag")
 	// rTag.Use(middleware.AuthMiddleware()
 	{
-		rTag.POST("/add", tag.AddTag)
-		rTag.GET("", tag.ListTags)
-		rTag.DELETE("/:id", tag.DeleteTag)
-		rTag.GET("/:id", tag.GetTagById)
+		rTag.POST("/add", tagHandler.AddTag)
+		rTag.GET("", tagHandler.ListTags)
+		rTag.DELETE("/:id", tagHandler.DeleteTag)
+		rTag.GET("/:id", tagHandler.GetTagById)
 	}
 
+	menuHandler := menu.NewMenuHandler(ctx, model.RedisClient)
 	rMenu := r.Group("v1/menu")
 	// rMenu.Use(middleware.AuthMiddleware()
 	{
-		rMenu.POST("/add", menu.AddMenu)
-		rMenu.GET("", menu.ListMenus)
-		rMenu.DELETE("/:id", menu.DeleteMenu)
-		rMenu.GET("/:id", menu.GetMenuById)
-		rMenu.PUT("/:id", menu.UpdateMenuById)
+		rMenu.POST("/add", menuHandler.AddMenu)
+		rMenu.GET("", menuHandler.ListMenus)
+		rMenu.DELETE("/:id", menuHandler.DeleteMenu)
+		rMenu.GET("/:id", menuHandler.GetMenuById)
+		rMenu.PUT("/:id", menuHandler.UpdateMenuById)
 	}
 
+	roleHandler := role.NewRoleHandler(ctx, model.RedisClient)
 	rRole := r.Group("v1/role")
 	// rRole.Use(middleware.AuthMiddleware()
 	{
-		rRole.POST("/add", role.AddRole)
-		rRole.GET("", role.ListRoles)
-		rRole.DELETE("/:id", role.DeleteRole)
-		rRole.GET("/:id", role.GetRoleById)
-		rRole.PUT("/:id", role.UpdateRole)
+		rRole.POST("/add", roleHandler.AddRole)
+		rRole.GET("", roleHandler.ListRoles)
+		rRole.DELETE("/:id", roleHandler.DeleteRole)
+		rRole.GET("/:id", roleHandler.GetRoleById)
+		rRole.PUT("/:id", roleHandler.UpdateRole)
 	}
 
 	rSd := r.Group("sd")

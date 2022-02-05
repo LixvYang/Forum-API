@@ -2,6 +2,7 @@ package tag
 
 import (
 	"fmt"
+	"log"
 	v1 "mixindev/api/v1"
 	"mixindev/model"
 	"mixindev/pkg/errmsg"
@@ -25,7 +26,7 @@ type CreateResponse struct {
 // @Param tags body tag.CreateRequest true "创建新标签"
 // @Success 200 {object} tag.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":"..."}}"
 // @Router /v1/tag/add [post]
-func AddTag(c *gin.Context) {
+func (tagHandler *TagHandler) AddTag(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
@@ -42,6 +43,8 @@ func AddTag(c *gin.Context) {
 
 	//convert r to CreateResponse
 	rsp := CreateResponse(r)
+	log.Println("Remove data from Redis")
+	tagHandler.redisClient.Del("tags")
 
 	// Show the user information.
 	v1.SendResponse(c, nil, rsp)
