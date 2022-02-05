@@ -26,19 +26,19 @@ func (userHandler *UserHandler) GetUserById(c *gin.Context) {
 	var u *model.User
 	// val, err := userHandler.redisClient.Get("UserId:").Result()
 	// if err == redis.Nil {
-		user, err := u.GetUserById(userId)
-		if err != nil {
-			v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
-			return
-		}
-		res := &model.UserInfo{
-			Id:       int(user.ID),
-			Username: user.Username,
-			Avatar:   user.Avatar,
-		}
-		// data, _ := json.Marshal(res)
-		// userHandler.redisClient.Set("UserId:", string(data), 0)
-		v1.SendResponse(c, nil, res)
+	user, err := u.GetUserById(userId)
+	if err != nil {
+		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
+		return
+	}
+	res := &model.UserInfo{
+		Id:       int(user.ID),
+		Username: user.Username,
+		Avatar:   user.Avatar,
+	}
+	// data, _ := json.Marshal(res)
+	// userHandler.redisClient.Set("UserId:", string(data), 0)
+	v1.SendResponse(c, nil, res)
 	// } else if err != nil {
 	// 	v1.SendResponse(c, err, nil)
 	// 	return

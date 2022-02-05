@@ -59,23 +59,25 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	}
 	
 	//文章相关
+	articleHandler := article.NewArticleHandler(ctx, model.RedisClient)
 	rArticle := r.Group("v1/article")
 	// rArticle.Use(middleware.AuthMiddleware())
 	{
-		rArticle.GET("/:id", article.GetArticleById)
-		rArticle.GET("", article.GetArticlesList)
-		rArticle.DELETE("/:id", article.DeleteArticle)
-		rArticle.POST("/add", article.AddArticle)
-		rArticle.PUT(":id",article.UpdateArticleById)
+		rArticle.GET("/:id", articleHandler.GetArticleById)
+		rArticle.GET("", articleHandler.GetArticlesList)
+		rArticle.DELETE("/:id", articleHandler.DeleteArticle)
+		rArticle.POST("/add", articleHandler.AddArticle)
+		rArticle.PUT(":id",articleHandler.UpdateArticleById)
 	}
-
+	
+	categoryHandler := category.NewCategoryHandler(ctx, model.RedisClient)
 	rCategory := r.Group("v1/category")
 	// rCategory.Use(middleware.AuthMiddleware()
 	{
-		rCategory.POST("/add", category.AddCategory)
-		rCategory.GET("", category.ListCategories)
-		rCategory.DELETE("/:id", category.DeleteCategory)
-		rCategory.GET("/:id", category.GetCategoryById)
+		rCategory.POST("/add", categoryHandler.AddCategory)
+		rCategory.GET("", categoryHandler.ListCategories)
+		rCategory.DELETE("/:id", categoryHandler.DeleteCategory)
+		rCategory.GET("/:id", categoryHandler.GetCategoryById)
 	}
 
 	tagHandler := tag.NewTagHandler(ctx, model.RedisClient)

@@ -17,12 +17,13 @@ import (
 // @Param id path int true "文章的数据库id"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/article/{id} [delete]
-func DeleteArticle(c *gin.Context) {
+func (articleHandler *ArticleHandler) DeleteArticle(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var a *model.Article
 	err := a.DeleteArticle(id)
 	if err != nil {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 	}
+	articleHandler.DeleteArticleFromRedis()
 	v1.SendResponse(c, nil, nil)
 }

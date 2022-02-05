@@ -28,7 +28,7 @@ func (u *User) AddUser() error {
 
 // GetUserById gets an user by the user id.
 func (u *User) GetUserById(id int) (*User, error) {
-	d := db.First(&u, id)
+	d := db.Find(&u, id)
 	return u, d.Error
 }
 

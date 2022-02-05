@@ -13,7 +13,7 @@ func ListArticles(offset, limit int) ([]model.ArticleInfo, int64, error) {
 	if err != nil {
 		return nil, count, err
 	}
-
+	
 	var articleList []model.ArticleInfo
 	for _, article := range articles {
 		user, uErr := user.GetUserById(article.UserId)
