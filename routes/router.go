@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"context"
 	"mixindev/api/v1/article"
 	"mixindev/api/v1/category"
 	"mixindev/api/v1/menu"
@@ -8,6 +9,7 @@ import (
 	"mixindev/api/v1/tag"
 	"mixindev/api/v1/user"
 	"mixindev/middleware"
+	"mixindev/model"
 	"mixindev/api/sd"
 	"net/http"
 
@@ -18,7 +20,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var userHandler *user.UserHandler
+
 func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
+
+	ctx := context.Background()
 	// Middlewares
 	r.Use(gin.Recovery())
 	r.Use(middleware.NoCache)
@@ -38,18 +44,19 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	r.GET("v1/auth/userinfo", user.GetUseInfo)
 	// r.Use(middleware.AuthMiddleware())
 
+	userHandler = user.NewUserHandler(ctx, model.RedisClient)
 	rUser := r.Group("v1/user")
 	//auth 
 	// rUser.Use(middleware.AuthMiddleware())
 	{
 		// 登录鉴权后获取用户信息
-		rUser.POST("/add", user.AddUser)
-		rUser.GET("/:id", user.GetUserById)
-		rUser.GET("", user.ListUsers)
-		rUser.DELETE("/:id", user.DeleteUser)
-		rUser.PUT("/:id", user.UpdateUserById)
+		rUser.POST("/add", userHandler.AddUser)
+		rUser.GET("/:id", userHandler.GetUserById)
+		rUser.GET("", userHandler.ListUsers)
+		rUser.DELETE("/:id", userHandler.DeleteUser)
+		rUser.PUT("/:id", userHandler.UpdateUserById)
 	}
-
+	
 	//文章相关
 	rArticle := r.Group("v1/article")
 	// rArticle.Use(middleware.AuthMiddleware())

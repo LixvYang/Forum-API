@@ -5,6 +5,7 @@ import (
 	"mixindev/model"
 	"mixindev/pkg/errmsg"
 	"strconv"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,7 +18,7 @@ import (
 // @Param id path int true "The user's database id index num"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/user/{id} [delete]
-func DeleteUser(c *gin.Context) {
+func (userHandler *UserHandler) DeleteUser(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	var u *model.User
 	err := u.DeleteUser(userId)
@@ -25,6 +26,8 @@ func DeleteUser(c *gin.Context) {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
+	log.Println("Remove data from Redis")
+	userHandler.redisClient.Del("users")
 
 	v1.SendResponse(c, nil, nil)
 }

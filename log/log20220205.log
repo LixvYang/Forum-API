@@ -1,0 +1,3 @@
+time="2022-02-05 12:48:21" level=info Agent=PostmanRuntime/7.29.0 DataSize=1880 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user SpendTime="357 ms" status=200
+time="2022-02-05 12:48:44" level=info Agent=PostmanRuntime/7.29.0 DataSize=1851 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user SpendTime="4 ms" status=200
+time="2022-02-05 12:48:49" level=info Agent=PostmanRuntime/7.29.0 DataSize=1851 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user SpendTime="5 ms" status=200

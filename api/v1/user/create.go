@@ -1,6 +1,7 @@
 package user
 
 import (
+	"log"
 	v1 "mixindev/api/v1"
 	"mixindev/model"
 	"mixindev/pkg/errmsg"
@@ -25,7 +26,7 @@ type CreateResponse struct {
 // @Param user body user.CreateRequest true "Create a new user"
 // @Success 200 {object} user.CreateResponse "{"code":0,"message":"OK","data":{"username":"Lixv"}}"
 // @Router /v1/user/add [post]
-func AddUser(c *gin.Context) {
+func (userHandler *UserHandler) AddUser(c *gin.Context) {
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
@@ -51,5 +52,7 @@ func AddUser(c *gin.Context) {
 	rsp := CreateResponse{
 		Username: r.Username,
 	}
+	log.Println("Remove data from Redis")
+	userHandler.redisClient.Del("users")
 	v1.SendResponse(c, nil, rsp)
 }

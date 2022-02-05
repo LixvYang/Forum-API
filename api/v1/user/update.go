@@ -1,6 +1,7 @@
 package user
 
 import (
+	"log"
 	v1 "mixindev/api/v1"
 	"mixindev/model"
 	"mixindev/pkg/errmsg"
@@ -18,7 +19,7 @@ import (
 // @Param user body model.User true "The user info"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/user/{id} [put]
-func UpdateUserById(c *gin.Context) {
+func (userHandler *UserHandler) UpdateUserById(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	var user model.User
 	if err := c.Bind(&user); err != nil {
@@ -37,5 +38,7 @@ func UpdateUserById(c *gin.Context) {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
+	log.Println("Remove data from Redis")
+	userHandler.redisClient.Del("users")
 	v1.SendResponse(c, nil, nil)
 }

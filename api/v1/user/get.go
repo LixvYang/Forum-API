@@ -18,7 +18,7 @@ import (
 // @Param id path string true "Id"
 // @Success 200 {object} model.UserInfo "{"code":0,"message":"OK","data":{"username":"kong"}}"
 // @Router /v1/user/{id} [get]
-func GetUserById(c *gin.Context) {
+func (userHandler *UserHandler) GetUserById(c *gin.Context) {
 	userId, _ := strconv.Atoi(c.Param("id"))
 	var u *model.User
 
