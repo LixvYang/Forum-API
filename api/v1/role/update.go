@@ -9,7 +9,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-
 // @Summary 更新角色数据
 // @Description 更新角色数据
 // @Tags role
@@ -19,7 +18,7 @@ import (
 // @Param role body model.Role true "role"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/role/{id} [put]
-func UpdateRole(c *gin.Context) {
+func (roleHandler *RoleHandler) UpdateRole(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var role model.Role
 	if err := c.ShouldBindJSON(&role); err != nil {
@@ -32,6 +31,7 @@ func UpdateRole(c *gin.Context) {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
-
+	// Delete role from redis
+	roleHandler.DeleteRoleFromRedis()
 	v1.SendResponse(c, nil, nil)
 }

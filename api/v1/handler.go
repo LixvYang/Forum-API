@@ -4,8 +4,10 @@ import (
 	"net/http"
 
 	"mixindev/pkg/errmsg"
+
 	"github.com/gin-gonic/gin"
 )
+
 
 type Response struct {
 	Code    int         `json:"code"`
@@ -22,4 +24,3 @@ func SendResponse(c *gin.Context, err error, data interface{})  {
 		Data:	 data,
 	})
 }
-
