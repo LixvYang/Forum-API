@@ -10,6 +10,7 @@
 - [Gin Framework](https://github.com/gin-gonic/gin).
 - [GORM](http://gorm.io).
 - [Swag](https://github.com/swaggo/swag)
+- [Redis](https://redis.io)
 
 Db 
 ![DB](db/db.png)
