@@ -17,12 +17,12 @@ import (
 // @Param id path string true "Id"
 // @Success 200 {object} model.TagInfo "{"code":0,"message":"OK","data":{"id":0,"tag_name":"..."}}"
 // @Router /v1/tag/{id} [get]
-func GetTagById(c *gin.Context) {
+func (tagHandler *TagHandler) GetTagById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var t *model.Tag
 	tag, err := t.GetTagById(id)
 	if err != nil {
-		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
+		v1.SendResponse(c, errmsg.ErrTagNotFound, nil)
 		return
 	}
 	v1.SendResponse(c, nil, model.TagInfo{Id: int(tag.ID), TagName: tag.TagName})

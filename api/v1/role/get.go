@@ -17,7 +17,7 @@ import (
 // @Param id path int true "角色数据的数据库id"
 // @Success 200 {object} model.RoleInfo "{"code":0,"message":"OK","data":{"id":0,"category_name":"..."}}"
 // @Router /v1/role/{id} [get]
-func GetRoleById(c *gin.Context) {
+func (roleHandler *RoleHandler) GetRoleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var role *model.Role
 	l, err := role.GetRoleById(id)

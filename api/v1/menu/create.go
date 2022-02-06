@@ -29,7 +29,7 @@ type CreateResponse struct {
 // @Param menu body menu.CreateRequest true "创建新标签"
 // @Success 200 {object} menu.CreateResponse "{"code":0,"message":"OK","data":{"tag_name":".."}}"
 // @Router /v1/menu/add [post]
-func AddMenu(c *gin.Context) {
+func (menuHandler *MenuHandler) AddMenu(c *gin.Context) {
 	var r CreateRequest
 	if err := c.ShouldBindJSON(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
@@ -49,6 +49,6 @@ func AddMenu(c *gin.Context) {
 	}
 
 	rep := CreateResponse(r)
-
+	menuHandler.DeleteMenuFromRedis()
 	v1.SendResponse(c, nil, rep)
 }

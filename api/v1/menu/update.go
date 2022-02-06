@@ -1,7 +1,6 @@
 package menu
 
 import (
-	"fmt"
 	v1 "mixindev/api/v1"
 	"mixindev/model"
 	"mixindev/pkg/errmsg"
@@ -19,7 +18,7 @@ import (
 // @Param menu body model.Menu true "The user info"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/menu/{id} [put]
-func UpdateMenuById(c *gin.Context) {
+func (menuHandler *MenuHandler) UpdateMenuById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var menu model.Menu
 	if err := c.ShouldBindJSON(&menu); err != nil {
@@ -29,9 +28,9 @@ func UpdateMenuById(c *gin.Context) {
 	menu.ID = uint(id)
 
 	if err := menu.UpdateMenu(); err != nil {
-		fmt.Println(err)
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
+	menuHandler.DeleteMenuFromRedis()
 	v1.SendResponse(c, nil, nil)
 }

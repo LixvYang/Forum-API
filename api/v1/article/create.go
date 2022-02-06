@@ -25,7 +25,7 @@ type CreateRequest struct {
 // @Param article body article.CreateRequest true "创建文章"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/article/add [post]
-func AddArticle(c *gin.Context) {
+func (articleHandler *ArticleHandler) AddArticle(c *gin.Context) {
 	var r CreateRequest
 	if err := c.Bind(&r); err != nil {
 		v1.SendResponse(c, errmsg.ErrBind, nil)
@@ -56,7 +56,7 @@ func AddArticle(c *gin.Context) {
 		return
 	}
 
-
+	articleHandler.DeleteArticleFromRedis()
 
 	v1.SendResponse(c, nil, nil)
 }

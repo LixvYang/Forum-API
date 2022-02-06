@@ -42,7 +42,7 @@ func (c *Category) ListCategories(offset,limit int) ([]Category, int64, error) {
 
 // 根据标签id获取标签数据.
 func (c *Category) GetCategoryById(id int) (*Category, error) {
-	d := db.First(&c, id)
+	d := db.Find(&c, id)
 	return c, d.Error
 }
 

@@ -69,10 +69,9 @@ func (userHandler *UserHandler) ListUsers(c *gin.Context) {
 		v1.SendResponse(c, err, nil)
 		return
 	} else {
-		log.Printf("Request to Redis")
+		log.Printf("Request to Redis for users")
 		UserResponse := make([]model.UserInfo, 0)
 		json.Unmarshal([]byte(val), &UserResponse)
 		v1.SendResponse(c, nil, UserResponse)
 	}
-
 }

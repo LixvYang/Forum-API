@@ -18,7 +18,7 @@ type TagInfo struct {
 
 // 根据标签id获取标签数据.
 func (t *Tag) GetTagById(id int) (*Tag, error) {
-	d := db.First(&t, id)
+	d := db.Find(&t, id)
 	return t, d.Error
 }
 

@@ -19,7 +19,7 @@ import (
 // @Param menu body model.Article true "The article info"
 // @Success 200 {object} v1.Response "{"code":0,"message":"OK","data":null}"
 // @Router /v1/article/{id} [put]
-func UpdateArticleById(c *gin.Context)  {
+func (articleHandler *ArticleHandler) UpdateArticleById(c *gin.Context)  {
 	id, _ := strconv.Atoi(c.Param("id"))
 
 	var article model.Article
@@ -33,5 +33,6 @@ func UpdateArticleById(c *gin.Context)  {
 		v1.SendResponse(c, errmsg.ErrDatabase, nil)
 		return
 	}
+	articleHandler.DeleteArticleFromRedis()
 	v1.SendResponse(c, nil, nil)
 }
