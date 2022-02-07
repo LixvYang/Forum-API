@@ -33,6 +33,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	r.Use(middleware.Secure)
 	r.Use(mw...)
 	// 404 Handler
+	
 	r.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API router.")
 	})
@@ -121,6 +122,6 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		rSd.GET("net",sd.NetCheck)
 		rSd.GET("/host",sd.HostCheck)
 	}
-
+	// r.RunTLS(":433","./certs/localhost.crt", "./certs/localhost.key")
 	return r
 }
