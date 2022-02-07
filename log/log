@@ -1,7 +1,6 @@
-time="2022-02-05T16:40:02+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=3583 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="42 ms" status=200
-time="2022-02-05T16:40:03+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=3558 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="4 ms" status=200
-time="2022-02-05T16:40:04+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=3558 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="9 ms" status=200
-time="2022-02-05T16:40:05+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=3558 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="1 ms" status=200
+time="2022-02-07T00:10:59+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" DataSize=3558 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="29 ms" status=200
+time="2022-02-06T23:57:37+08:00" level=warning Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" DataSize=25 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/favicon.ico SpendTime="0 ms" status=404
+T16:40:05+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=3558 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/article SpendTime="1 ms" status=200
 05T15:02:38+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=60 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/tag/3 SpendTime="3 ms" status=200
 time="2022-02-05T15:02:45+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=58 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/tag/1 SpendTime="5 ms" status=200
 time="2022-02-05T15:04:34+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=176 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="15 ms" status=200
