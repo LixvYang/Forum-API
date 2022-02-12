@@ -84,42 +84,42 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	rTag := r.Group("v1/tag")
 	// rTag.Use(middleware.AuthMiddleware()
 	{
-		rTag.POST("/add", tagHandler.AddTag)
-		rTag.GET("", tagHandler.ListTags)
-		rTag.DELETE("/:id", tagHandler.DeleteTag)
-		rTag.GET("/:id", tagHandler.GetTagById)
+		go rTag.POST("/add", tagHandler.AddTag)
+		go rTag.GET("", tagHandler.ListTags)
+		go rTag.DELETE("/:id", tagHandler.DeleteTag)
+		go rTag.GET("/:id", tagHandler.GetTagById)
 	}
 
 	menuHandler := menu.NewMenuHandler(ctx, model.RedisClient)
 	rMenu := r.Group("v1/menu")
 	// rMenu.Use(middleware.AuthMiddleware()
 	{
-		rMenu.POST("/add", menuHandler.AddMenu)
-		rMenu.GET("", menuHandler.ListMenus)
-		rMenu.DELETE("/:id", menuHandler.DeleteMenu)
-		rMenu.GET("/:id", menuHandler.GetMenuById)
-		rMenu.PUT("/:id", menuHandler.UpdateMenuById)
+		go rMenu.POST("/add", menuHandler.AddMenu)
+		go rMenu.GET("", menuHandler.ListMenus)
+		go rMenu.DELETE("/:id", menuHandler.DeleteMenu)
+		go rMenu.GET("/:id", menuHandler.GetMenuById)
+		go rMenu.PUT("/:id", menuHandler.UpdateMenuById)
 	}
 
 	roleHandler := role.NewRoleHandler(ctx, model.RedisClient)
 	rRole := r.Group("v1/role")
 	// rRole.Use(middleware.AuthMiddleware()
 	{
-		rRole.POST("/add", roleHandler.AddRole)
-		rRole.GET("", roleHandler.ListRoles)
-		rRole.DELETE("/:id", roleHandler.DeleteRole)
-		rRole.GET("/:id", roleHandler.GetRoleById)
-		rRole.PUT("/:id", roleHandler.UpdateRole)
+		go rRole.POST("/add", roleHandler.AddRole)
+		go rRole.GET("", roleHandler.ListRoles)
+		go rRole.DELETE("/:id", roleHandler.DeleteRole)
+		go rRole.GET("/:id", roleHandler.GetRoleById)
+		go rRole.PUT("/:id", roleHandler.UpdateRole)
 	}
 
 	rSd := r.Group("sd")
 	{
-		rSd.GET("/health", sd.HealthCheck)
-		rSd.GET("/disk", sd.DiskCheck)
-		rSd.GET("/cpu", sd.CPUCheck)
-		rSd.GET("/ram", sd.RAMCheck)
-		rSd.GET("net",sd.NetCheck)
-		rSd.GET("/host",sd.HostCheck)
+		go rSd.GET("/health", sd.HealthCheck)
+		go rSd.GET("/disk", sd.DiskCheck)
+		go rSd.GET("/cpu", sd.CPUCheck)
+		go rSd.GET("/ram", sd.RAMCheck)
+		go rSd.GET("net",sd.NetCheck)
+		go rSd.GET("/host",sd.HostCheck)
 	}
 	//Will run https.
 	// r.RunTLS(":433","./certs/localhost.crt", "./certs/localhost.key")

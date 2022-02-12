@@ -46,6 +46,10 @@ Open browser with http://localhost:3000/swagger/index.html#/ to check document.
 ```
 go run main.go
 ```
+OR run in release mode.
+```
+./start.sh
+```
 
 ### Benchmark
 ```
