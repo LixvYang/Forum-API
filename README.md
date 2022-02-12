@@ -3,7 +3,6 @@
 
 ### Get Start
 
-
 ### Technologies Used
 
 - [Golang](https://golang.org).
@@ -12,7 +11,7 @@
 - [Swag](https://github.com/swaggo/swag)
 - [Redis](https://redis.io)
 
-Db 
+Database
 ![DB](db/db.png)
 
 ### Install
@@ -30,24 +29,44 @@ git clone git@github.com:LixvYang/Forum-API.git
   ```
   DbHost = 127.0.0.1
   ```
-
+- Init redis with docker:
+  ```go
+  docker run -d --name redis -p 6379:6379 redis:6.0
+  ```
 > In the root directory, run the command.
 ```
 swag init --parseDependency --parseInternal
 ```
 Wait patiently for the end.
 
+Open browser with http://localhost:3000/swagger/index.html#/ to check document.
+
+
 ### Start service
 ```
 go run main.go
 ```
 
-Open browser with http://localhost:3000/swagger/index.html#/
+### Benchmark
+```
+ab -n 2000 -c 100 -g without-cache.data http://localhost:3000/api/v1/users
+```
 
+```
+ab -n 2000 -c 100 -g with-cache.data http://localhost:3000/api/v1/users
+```
+
+```
+gnuplot apache-benchmark.p
+```
+
+After bennchmark  with redis show
+
+![benchmark](benchmark.png)  
 ## Author
-Lixv
+[Lixv](https://github.com/lixvyang)
 
 ## LICENSE
-MIT
+[MIT](LICENSE)
 
 

@@ -33,17 +33,16 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	r.Use(middleware.Secure)
 	r.Use(mw...)
 	// 404 Handler
-	
-	r.NoRoute(func(c *gin.Context) {
+	go r.NoRoute(func(c *gin.Context) {
 		c.String(http.StatusNotFound, "The incorrect API router.")
 	})
 
-	//swagger api 文档
-	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//swagger api Document
+	go r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	r.POST("v1/login", user.Login)
+	go r.POST("v1/login", user.Login)
 
-	r.GET("v1/auth/userinfo", user.GetUseInfo)
+	go r.GET("v1/auth/userinfo", user.GetUseInfo)
 	// r.Use(middleware.AuthMiddleware())
 
 	userHandler := user.NewUserHandler(ctx, model.RedisClient)
@@ -52,11 +51,11 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// rUser.Use(middleware.AuthMiddleware())
 	{
 		// 登录鉴权后获取用户信息
-		rUser.POST("/add", userHandler.AddUser)
-		rUser.GET("/:id", userHandler.GetUserById)
-		rUser.GET("", userHandler.ListUsers)
-		rUser.DELETE("/:id", userHandler.DeleteUser)
-		rUser.PUT("/:id", userHandler.UpdateUserById)
+		go rUser.POST("/add", userHandler.AddUser)
+		go rUser.GET("/:id", userHandler.GetUserById)
+		go rUser.GET("", userHandler.ListUsers)
+		go rUser.DELETE("/:id", userHandler.DeleteUser)
+		go rUser.PUT("/:id", userHandler.UpdateUserById)
 	}
 	
 	//文章相关
@@ -64,21 +63,21 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	rArticle := r.Group("v1/article")
 	// rArticle.Use(middleware.AuthMiddleware())
 	{
-		rArticle.GET("/:id", articleHandler.GetArticleById)
-		rArticle.GET("", articleHandler.GetArticlesList)
-		rArticle.DELETE("/:id", articleHandler.DeleteArticle)
-		rArticle.POST("/add", articleHandler.AddArticle)
-		rArticle.PUT(":id",articleHandler.UpdateArticleById)
+		go rArticle.GET("/:id", articleHandler.GetArticleById)
+		go rArticle.GET("", articleHandler.GetArticlesList)
+		go rArticle.DELETE("/:id", articleHandler.DeleteArticle)
+		go rArticle.POST("/add", articleHandler.AddArticle)
+		go rArticle.PUT(":id",articleHandler.UpdateArticleById)
 	}
 	
 	categoryHandler := category.NewCategoryHandler(ctx, model.RedisClient)
 	rCategory := r.Group("v1/category")
 	// rCategory.Use(middleware.AuthMiddleware()
 	{
-		rCategory.POST("/add", categoryHandler.AddCategory)
-		rCategory.GET("", categoryHandler.ListCategories)
-		rCategory.DELETE("/:id", categoryHandler.DeleteCategory)
-		rCategory.GET("/:id", categoryHandler.GetCategoryById)
+		go rCategory.POST("/add", categoryHandler.AddCategory)
+		go rCategory.GET("", categoryHandler.ListCategories)
+		go rCategory.DELETE("/:id", categoryHandler.DeleteCategory)
+		go rCategory.GET("/:id", categoryHandler.GetCategoryById)
 	}
 
 	tagHandler := tag.NewTagHandler(ctx, model.RedisClient)
@@ -122,6 +121,7 @@ func InitRouter(r *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 		rSd.GET("net",sd.NetCheck)
 		rSd.GET("/host",sd.HostCheck)
 	}
+	//Will run https.
 	// r.RunTLS(":433","./certs/localhost.crt", "./certs/localhost.key")
 	return r
 }
