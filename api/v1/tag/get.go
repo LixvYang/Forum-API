@@ -22,7 +22,7 @@ func (tagHandler *TagHandler) GetTagById(c *gin.Context) {
 	var t *model.Tag
 	tag, err := t.GetTagById(id)
 	if err != nil {
-		v1.SendResponse(c, errmsg.ErrUserNotFound, nil)
+		v1.SendResponse(c, errmsg.ErrTagNotFound, nil)
 		return
 	}
 	v1.SendResponse(c, nil, model.TagInfo{Id: int(tag.ID), TagName: tag.TagName})

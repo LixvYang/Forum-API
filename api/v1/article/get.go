@@ -17,7 +17,7 @@ import (
 // @Param id path string true "Id"
 // @Success 200 {object} model.ArticleInfo "{"code":0,"message":"OK","data":{}}"
 // @Router /v1/article/{id} [get]
-func GetArticleById(c *gin.Context) {
+func (articleHandler *ArticleHandler) GetArticleById(c *gin.Context) {
 	id, _ := strconv.Atoi(c.Param("id"))
 	var art *model.Article
 	var cate *model.Category

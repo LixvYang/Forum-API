@@ -10,7 +10,7 @@ import (
 )
 
 
-// @title Mixindev API
+// @title Forum-API
 // @version 1.0
 // @description mixindev API doc
 // @securityDefinitions.apikey ApiKeyAuth
@@ -23,17 +23,17 @@ import (
 // @BasePath
 func main() {
 
-	model.InitDb()
+	go model.InitDb()
 	// routes.InitRouter()
 
 	// Set gin mode
-	gin.SetMode(utils.AppMode)
+	go gin.SetMode(utils.AppMode)
 
 	//Create gin engine
 	g := gin.New()
 
 	//Routes
-	routes.InitRouter(
+	go routes.InitRouter(
 		// Cores.
 		g,
 		// Middlwares.

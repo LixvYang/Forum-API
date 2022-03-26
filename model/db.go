@@ -55,6 +55,7 @@ func InitDb() {
 	// SetConnMaxLifetiment 设置连接的最大可复用时间。
 	sqlDB.SetConnMaxLifetime(10 * time.Second)
 
+	// Redis init.
 	RedisClient = redis.NewClient(&redis.Options{
 		Addr: "localhost:6379",
 		Password: "",

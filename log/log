@@ -1,17 +1,14 @@
-time="2022-02-05T14:15:01+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=1261 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/menu SpendTime="90 ms" status=200
-time="2022-02-05T14:15:02+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=1261 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/menu SpendTime="6 ms" status=200
-time="2022-02-05T14:15:04+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=1261 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/menu SpendTime="2 ms" status=200
-time="2022-02-05T14:15:05+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=1261 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/menu SpendTime="3 ms" status=200
-time="2022-02-05T14:15:57+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=37 HostName=LAPTOP-BB441EFS Ip="::1" Method=PUT Path=/v1/menu/17 SpendTime="63 ms" status=200
-me="2022-02-05T13:54:06+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=35 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="3 ms" status=200
-time="2022-02-05T13:54:06+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=35 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="4 ms" status=200
-time="2022-02-05T13:54:17+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=176 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="18 ms" status=200
-time="2022-02-05T13:54:18+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=35 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="3 ms" status=200
-time="2022-02-05T13:54:19+08:00" level=info Agent=PostmanRuntime/7.29.0 DataSize=35 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/v1/user/4 SpendTime="2 ms" status=200
-00
-3:49+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" DataSize=61 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/sd/ram SpendTime="1 ms" status=200
-time="2021-10-30T17:13:56+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36" DataSize=61 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/sd/ram SpendTime="0 ms" status=200
-time="2021-10-30T17:32:23+08:00" level=info Agent=PostmanRuntime/7.26.10 DataSize=61 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/sd/ram SpendTime="0 ms" status=200
+time="2022-03-26T16:59:17+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=3511 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/index.html SpendTime="5 ms" status=200
+time="2022-03-26T16:59:17+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=143669 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/swagger-ui.css SpendTime="1 ms" status=200
+time="2022-03-26T16:59:17+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=1091405 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/swagger-ui-bundle.js SpendTime="4 ms" status=200
+time="2022-03-26T16:59:17+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=337216 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/swagger-ui-standalone-preset.js SpendTime="2 ms" status=200
+time="2022-03-26T16:59:18+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=628 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/favicon-32x32.png SpendTime="225 ms" status=200
+time="2022-03-26T16:59:18+08:00" level=error Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=0 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/doc.json SpendTime="0 ms" status=500
+time="2022-03-26T16:59:18+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=628 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/favicon-32x32.png SpendTime="0 ms" status=200
+200
+EFS Ip=127.0.0.1 Method=GET Path=/swagger/doc.json SpendTime="2 ms" status=200
+time="2022-03-26T16:38:56+08:00" level=info Agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.74 Safari/537.36" DataSize=628 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/favicon-32x32.png SpendTime="0 ms" status=200
+0 ms" status=200
 time="2021-10-30T17:32:34+08:00" level=info Agent=PostmanRuntime/7.26.10 DataSize=3511 HostName=LAPTOP-BB441EFS Ip=127.0.0.1 Method=GET Path=/swagger/index.html SpendTime="1 ms" status=200
 time="2021-10-30T17:33:43+08:00" level=info Agent=PostmanRuntime/7.26.10 DataSize=3 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/sd/health SpendTime="0 ms" status=200
 time="2021-10-30T17:34:09+08:00" level=info Agent=PostmanRuntime/7.26.10 DataSize=65 HostName=LAPTOP-BB441EFS Ip="::1" Method=GET Path=/sd/disk SpendTime="3 ms" status=200
