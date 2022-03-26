@@ -10,7 +10,7 @@ import (
 )
 
 
-// @title Mixindev API
+// @title Forum-API
 // @version 1.0
 // @description mixindev API doc
 // @securityDefinitions.apikey ApiKeyAuth
